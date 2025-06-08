@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
-    <title>Contact Jhales Santiago</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base styles */
         body {
             font-family: 'Inter', Arial, sans-serif;
             background-color: #1a1a1a;
@@ -19,10 +19,9 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Header and Navigation (Copied from index.html) */
         .header {
             background-color: #1a1a1a;
-            padding: 20px 40px; /* Adjusted back to 20px for consistency with index.html */
+            padding: 20px 40px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -51,7 +50,7 @@
         }
 
         .main-nav {
-            display: flex; /* Default to flex for desktop */
+            display: flex;
             align-items: center;
         }
 
@@ -98,20 +97,18 @@
             color: #00bfff;
         }
 
-        /* Hamburger Menu Icon - Added for mobile responsiveness */
         .hamburger-menu {
-            display: none; /* Hidden by default on desktop */
+            display: none;
             font-size: 1.8em;
             color: #00bfff;
             cursor: pointer;
-            z-index: 1001; /* Ensure it's above other content */
+            z-index: 1001;
         }
 
-        /* Contact Form Section Styling */
         .contact-page-section {
             padding: 40px 20px 30px;
             max-width: 550px;
-            margin: 100px auto 50px auto; /* Increased top margin from 0 to 100px */
+            margin: 100px auto 50px auto;
             background-color: #222222;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
@@ -120,8 +117,8 @@
             align-items: center;
             text-align: center;
             box-sizing: border-box;
-            min-height: calc(100vh - 200px); /* Adjusted for header height */
-            justify-content: flex-start; /* Align content to the top within the section */
+            min-height: calc(100vh - 200px);
+            justify-content: flex-start;
         }
 
         .contact-form-container {
@@ -145,7 +142,6 @@
             color: #d0d0d0;
         }
 
-        /* Form Styling */
         .contact-form {
             display: flex;
             flex-direction: column;
@@ -206,7 +202,8 @@
             justify-content: center;
             gap: 10px;
             box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-            width: fit-content;
+            width: 100%;
+            max-width: 300px;
             margin: 0 auto;
         }
 
@@ -216,7 +213,6 @@
             box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
         }
 
-        /* Message Sent Notification */
         .message-success {
             background-color: #28a745;
             color: #ffffff;
@@ -232,8 +228,6 @@
             box-sizing: border-box;
         }
 
-
-        /* Other ways to connect section */
         .other-connect {
             margin-top: 35px;
             text-align: center;
@@ -247,14 +241,17 @@
 
         .other-connect-links {
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             gap: 8px;
             flex-wrap: wrap;
         }
 
         .other-connect-links a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             background-color: #2b2b2b;
             color: #f0f0f0;
             padding: 8px 18px;
@@ -263,6 +260,8 @@
             font-size: 0.85em;
             font-weight: 500;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            max-width: 280px;
         }
 
         .other-connect-links a i {
@@ -275,7 +274,6 @@
             transform: translateY(-2px);
         }
 
-        /* Footer (Copied from index.html) */
         .footer {
             background-color: #1a1a1a;
             color: #f0f0f0;
@@ -348,56 +346,55 @@
             margin-left: 20px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
-                flex-direction: row; /* Keep logo and hamburger in a row */
+                flex-direction: row;
                 justify-content: space-between;
                 padding: 15px 20px;
-                position: fixed; /* Keep fixed position on mobile */
-                width: 100%; /* Ensure it spans full width */
-                box-sizing: border-box; /* Include padding in width */
+                position: fixed;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .main-nav {
-                display: none; /* Hide nav links by default on mobile */
+                display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 65px; /* Below the header (adjust based on actual header height) */
+                top: 65px;
                 left: 0;
                 width: 100%;
-                background-color: #222222; /* Darker background for menu */
+                background-color: #222222;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
                 padding: 20px 0;
                 border-radius: 0 0 10px 10px;
                 transition: transform 0.3s ease-out;
-                transform: translateY(-100%); /* Start off-screen */
-                box-sizing: border-box; /* Include padding in width */
+                transform: translateY(-100%);
+                box-sizing: border-box;
             }
 
             .main-nav.active {
-                display: flex; /* Show when active */
-                transform: translateY(0); /* Slide in */
+                display: flex;
+                transform: translateY(0);
             }
 
             .main-nav a {
-                margin: 10px 20px; /* Adjust spacing for stacked links */
+                margin: 10px 20px;
                 font-size: 1.2em;
                 width: fit-content;
-                align-self: flex-start; /* Align links to the left in column */
+                align-self: flex-start;
             }
 
             .main-nav a::after {
-                left: 20px; /* Adjust underline position for left alignment */
+                left: 20px;
             }
 
             .hamburger-menu {
-                display: block; /* Show hamburger icon on mobile */
+                display: block;
             }
 
             .contact-page-section {
                 padding: 40px 15px 20px;
-                margin-top: 80px; /* Adjusted top margin to clear fixed header */
+                margin-top: 80px;
                 margin-bottom: 25px;
                 min-height: auto;
             }
@@ -426,7 +423,7 @@
             }
 
             .submit-btn {
-                width: 90%;
+                width: 100%;
                 padding: 10px 20px;
                 font-size: 0.9em;
             }
@@ -441,11 +438,11 @@
             }
 
             .other-connect-links {
-                flex-direction: column;
                 gap: 8px;
             }
+
             .other-connect-links a {
-                width: 90%;
+                width: 100%;
                 max-width: 280px;
                 justify-content: center;
                 padding: 8px 15px;
@@ -458,7 +455,9 @@
                 text-align: center;
             }
 
-            .footer-left, .footer-right, .footer-social-icons {
+            .footer-left,
+            .footer-right,
+            .footer-social-icons {
                 text-align: center;
                 min-width: unset;
                 margin: 0 0 10px 0;
@@ -474,30 +473,32 @@
             .header-logo {
                 font-size: 1.5em;
             }
+
             .main-nav a {
                 font-size: 1.1em;
             }
+
             .contact-page-section h2 {
                 font-size: 1.6em;
             }
         }
     </style>
 </head>
+
 <body>
 
     <header class="header">
         <a href="index.html" class="header-logo">
             <i class="fas fa-cube"></i> MyPortfolio
         </a>
-        <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i> <!-- Hamburger Menu Icon -->
+        <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
         <nav class="main-nav" id="main-nav-links">
             <a href="about.html"><i class="fas fa-user"></i> About</a>
-            <a href="index.html#skills"><i class="fa-brands fa-laravel"></i> Skills</a>
-            <a href="index.html#projects"><i class="fas fa-folder-open"></i> Projects</a>
+            <a href="skills.html"><i class="fa-brands fa-laravel"></i> Skills</a>
+            <a href="projects.html"><i class="fas fa-folder-open"></i> Projects</a>
             <a href="contact.html" class="active-nav-link"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
     </header>
-    <!-- Removed <br><br> as the header is fixed and padding handles spacing -->
 
     <section class="contact-page-section">
         <div class="contact-form-container">
@@ -522,17 +523,18 @@
                 </button>
             </form>
 
-            <!-- Message Sent Successfully Notification -->
             <div id="successMessage" class="message-success">
                 Message sent successfully!
             </div>
 
             <div class="other-connect">
-                <h3>Or connect with me directly:</h3> <!-- Added a title for clarity -->
+                <h3>Or connect with me directly:</h3>
                 <div class="other-connect-links">
                     <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                    <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i>
+                        LinkedIn</a>
+                    <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i>
+                        GitHub</a>
                 </div>
             </div>
         </div>
@@ -555,10 +557,8 @@
     </footer>
 
     <script>
-        // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Hamburger menu functionality
         const hamburgerMenu = document.getElementById('hamburger-menu-icon');
         const mainNavLinks = document.getElementById('main-nav-links');
 
@@ -566,7 +566,6 @@
             mainNavLinks.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked (for mobile)
         mainNavLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (mainNavLinks.classList.contains('active')) {
@@ -575,32 +574,23 @@
             });
         });
 
-        // Highlight current page in nav
         const currentPath = window.location.pathname.split('/').pop();
         const navLinks = document.querySelectorAll('.main-nav a');
         navLinks.forEach(link => {
-            // Remove active class from all links first to ensure only one is active
-            link.classList.remove('active-nav-link'); 
-            
-            // Handle direct page links
+            link.classList.remove('active-nav-link');
+
             if (link.getAttribute('href') === currentPath) {
                 link.classList.add('active-nav-link');
-            } 
-            // Handle index.html and its hash links (e.g., #skills, #projects)
-            else if (currentPath === 'index.html' && link.getAttribute('href').startsWith('index.html#')) {
-                // Check if the hash matches the current section in view, or just handle it if it's the main index page
-                // For simplicity, we'll just not activate hash links from other pages directly.
-                // The user is on index.html, so 'About' link should not be active unless they are actually on 'about.html'
             }
-            // For the index.html itself, if no hash is active, default to the "Skills" link (or adjust as needed)
+            else if (currentPath === 'index.html' && link.getAttribute('href').startsWith('index.html#')) {
+            }
             if (currentPath === 'index.html' && window.location.hash === '' && link.getAttribute('href') === '#skills') {
                 link.classList.add('active-nav-link');
             }
-            if (currentPath === '' && link.getAttribute('href') === '#skills') { // for root path
+            if (currentPath === '' && link.getAttribute('href') === '#skills') {
                 link.classList.add('active-nav-link');
             }
         });
-        // Special handling for the "Contact" link to be active only on contact.html
         if (currentPath === 'contact.html') {
             document.querySelector('.main-nav a[href="contact.html"]').classList.add('active-nav-link');
         } else {
@@ -608,37 +598,19 @@
         }
 
 
-        // Form submission handling for success message
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
             const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block'; // Show the message
-
-            // Reset the form fields
+            successMessage.style.display = 'block';
             this.reset();
 
-            // Hide the message after 3 seconds (3000 milliseconds)
             setTimeout(() => {
                 successMessage.style.display = 'none';
             }, 3000);
 
-            // In a real application, you would send the form data to your server here
-            // Example:
-            // fetch(this.action, {
-            //     method: this.method,
-            //     body: new FormData(this)
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     console.log('Success:', data);
-            //     // Show success message
-            // })
-            // .catch((error) => {
-            //     console.error('Error:', error);
-            //     // Show error message
             // });
         });
     </script>
 </body>
+
 </html>

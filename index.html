@@ -141,7 +141,7 @@
 
         .tagline {
             color: #d0d0d0;
-            font-size: 1.8em;
+            font-size: 2.2em;
             margin-bottom: 40px;
             font-weight: 300;
         }
@@ -436,6 +436,9 @@
 
         @media (max-width: 768px) {
             .header {
+                .tagline {
+        font-size: 1.8em; /* Increased from 1.6em for mobile */
+    }
                 flex-direction: row;
                 justify-content: space-between;
                 padding: 15px 20px;
@@ -569,6 +572,9 @@
 
         @media (max-width: 480px) {
             h1 {
+                .tagline {
+        font-size: 1.5em; /* Increased from 1.3em for smaller phones */
+    }
                 font-size: 2.6em; /* Further adjustment for smaller phones */
             }
 

@@ -205,6 +205,7 @@
             transform: scale(1.1);
         }
 
+        /* Hero buttons will always be visible by default, and animated if you re-add animation */
         .hero-buttons {
             display: flex;
             flex-direction: column;
@@ -212,14 +213,9 @@
             align-items: center;
             gap: 20px;
             margin-top: 30px;
-            opacity: 1; /* Initially visible on larger screens */
-            transform: translateY(0);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .hero-buttons.mobile-hidden {
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1; /* Always visible */
+            transform: translateY(0); /* Always in position */
+            transition: none; /* No transition on load if always visible */
         }
 
         .btn {
@@ -510,13 +506,8 @@
                 flex-direction: column;
                 gap: 15px;
                 margin-top: 25px;
-                opacity: 0; /* Initially hidden on mobile */
-                transform: translateY(20px);
-            }
-
-            .hero-buttons.visible-mobile {
-                opacity: 1;
-                transform: translateY(0);
+                opacity: 1; /* Ensure visible on mobile */
+                transform: translateY(0); /* Ensure no unwanted transform */
             }
 
             .btn {
@@ -558,12 +549,16 @@
                 text-align: center;
             }
 
-            .footer-left,
-            .footer-right,
-            .footer-social-icons {
+            .footer-left {
                 text-align: center;
                 min-width: unset;
-                margin: 0 0 15px 0;
+                margin: 0 0 15px 0; /* Ensures a gap after "Jhales Santiago Website Developer" */
+            }
+
+            .footer-right {
+                text-align: center;
+                min-width: unset;
+                margin: 0; /* Adjust or remove if needed */
             }
 
             .footer-social-icons {
@@ -639,20 +634,17 @@ Passionate about creating both static and dynamic web applications using modern 
             <div class="social-icons">
                 <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                                class="fab fa-linkedin"></i></a>
                 <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
 
-            <div class="hero-buttons mobile-hidden">
-                <a href="https://jhales.vercel.app/" class="btn" download><i class="fas fa-download"></i> Download
+            <div class="hero-buttons"> <a href="https://jhales.vercel.app/" class="btn" download><i class="fas fa-download"></i> Download
                     CV</a>
                 <a href="contact.html" class="btn secondary"><i class="fas fa-envelope"></i> Contact Me</a>
             </div>
         </div>
     </div>
-
-    
 
     <footer class="footer">
         <div class="footer-left">
@@ -662,7 +654,7 @@ Passionate about creating both static and dynamic web applications using modern 
         <div class="footer-social-icons">
             <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i
-                    class="fab fa-linkedin"></i></a>
+                            class="fab fa-linkedin"></i></a>
             <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
@@ -672,18 +664,14 @@ Passionate about creating both static and dynamic web applications using modern 
     </footer>
 
     <script>
-
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
 
         const hamburgerMenu = document.getElementById('hamburger-menu-icon');
         const mainNavLinks = document.getElementById('main-nav-links');
-        const heroButtons = document.querySelector('.hero-buttons');
 
         hamburgerMenu.addEventListener('click', () => {
             mainNavLinks.classList.toggle('active');
         });
-
 
         mainNavLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
@@ -692,7 +680,6 @@ Passionate about creating both static and dynamic web applications using modern 
                 }
             });
         });
-
 
         const sections = document.querySelectorAll('section');
 
@@ -716,34 +703,8 @@ Passionate about creating both static and dynamic web applications using modern 
             sectionObserver.observe(section);
         });
 
-        // Reveal hero buttons on scroll for mobile
-        function revealHeroButtons() {
-            if (window.innerWidth <= 768) {
-                const heroSectionHeight = document.querySelector('.hero-content').offsetHeight;
-                if (window.scrollY > heroSectionHeight * 0.7) {
-                    heroButtons.classList.add('visible-mobile');
-                    window.removeEventListener('scroll', revealHeroButtons); // Remove listener once shown
-                }
-            } else {
-                heroButtons.classList.remove('mobile-hidden'); // Ensure visible on larger screens
-                heroButtons.classList.remove('visible-mobile');
-                window.removeEventListener('scroll', revealHeroButtons);
-            }
-        }
-
-        window.addEventListener('scroll', revealHeroButtons);
-        window.addEventListener('resize', () => { // Reset on resize
-            if (window.innerWidth <= 768) {
-                heroButtons.classList.add('mobile-hidden');
-                heroButtons.classList.remove('visible-mobile');
-                window.addEventListener('scroll', revealHeroButtons);
-            } else {
-                heroButtons.classList.remove('mobile-hidden');
-                heroButtons.classList.remove('visible-mobile');
-                window.removeEventListener('scroll', revealHeroButtons);
-            }
-        });
-        revealHeroButtons(); // Initial check on load
+        // Simplified hero button visibility: they are always visible now by default in CSS.
+        // The previous JavaScript logic for `revealHeroButtons` is no longer needed.
 
 
         document.addEventListener('DOMContentLoaded', () => {

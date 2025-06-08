@@ -372,16 +372,21 @@
         }
 
         .personal-interests-section h3 {
-            color: #00bfff; /* Changed to match other section titles */
+            color: #00bfff;
+            /* Changed to match other section titles */
             font-size: 1.6em;
             margin-top: 0;
             margin-bottom: 15px;
             font-weight: 600;
-            text-align: left; /* Aligned to left like other sections */
-            border-bottom: 2px solid #00bfff; /* Added border to match others */
+            text-align: left;
+            /* Aligned to left like other sections */
+            border-bottom: 2px solid #00bfff;
+            /* Added border to match others */
             padding-bottom: 5px;
-            display: block; /* Make it a block element to span the width */
-            width: fit-content; /* Adjust width to content */
+            display: block;
+            /* Make it a block element to span the width */
+            width: fit-content;
+            /* Adjust width to content */
         }
 
         .personal-interests-grid {
@@ -430,6 +435,7 @@
         .interest-item:hover p {
             color: #1a1a1a;
         }
+
         /* --- End Personal Interests Section Styling --- */
 
         .footer {
@@ -587,12 +593,12 @@
             }
 
             .about-page-section>h2 {
-                font-size: 2em; /* Adjusted for better mobile heading size */
+                font-size: 2em;
                 text-align: center;
             }
 
             .about-page-section h3 {
-                font-size: 1.4em; /* Adjusted for better mobile subheading size */
+                font-size: 1.4em;
                 text-align: center;
                 width: 100%;
             }
@@ -602,34 +608,18 @@
             }
 
             .profile-pic {
-                width: 120px; /* Slightly smaller profile picture for tablets/smaller screens */
+                margin: 0 auto 20px auto;
+                width: 120px;
                 height: 120px;
             }
 
             .who-i-am p {
-                font-size: 0.95em; /* Slightly smaller text for readability */
+                font-size: 0.95em;
             }
 
             .education-item p,
             .education-item strong {
-                font-size: 0.9em; /* Smaller font for education details */
-            }
-
-            .stat-item h4 {
-                font-size: 1.8em; /* Adjusted stat numbers */
-            }
-
-            .stat-item p {
-                font-size: 0.8em; /* Adjusted stat descriptions */
-            }
-
-            .stat-card h4 {
-                font-size: 1.3em; /* Smaller headings in stat cards */
-            }
-
-            .stat-card p,
-            .stat-card ul li {
-                font-size: 0.85em; /* Smaller text in stat cards */
+                font-size: 0.9em;
             }
 
             .freelance-stats-grid-inner,
@@ -654,7 +644,7 @@
 
             .personal-interests-section h3 {
                 font-size: 1.5em;
-                text-align: left; /* Keep left alignment on smaller screens */
+                text-align: left;
                 margin-bottom: 10px;
             }
 
@@ -662,6 +652,7 @@
                 margin-top: 15px;
                 gap: 15px;
             }
+
             /* End Personal Interests Mobile Adjustments */
 
             .footer {
@@ -682,11 +673,88 @@
                 order: -1;
                 margin-bottom: 15px;
             }
+
+            /* --- Mobile Reordering and Education Box --- */
+            .main-content-wrapper {
+                flex-direction: column;
+                /* Stack left and right columns */
+            }
+
+            .about-left-column,
+            .about-right-column {
+                width: 100%;
+                /* Make them full width */
+                padding: 0;
+            }
+
+            .education-section {
+                background-color: #F0F0F0;
+                /* Gray background for mobile */
+                color: #1a1a1a;
+                /* Adjust text color for readability */
+                padding: 20px;
+                border-radius: 8px;
+                box-sizing: border-box;
+            }
+
+            .education-section h3 {
+                color: #00bfff;
+                /* Keep the title color */
+                text-align: left;
+                /* Align title to the left within the box */
+                width: fit-content;
+                /* Adjust width to content */
+                border-bottom: 2px solid #00bfff;
+                /* Keep the border */
+                padding-bottom: 5px;
+                margin-bottom: 10px;
+            }
+
+            .education-section .education-item p {
+                color: #333;
+                /* Adjust paragraph color */
+            }
+
+            .education-section .education-item strong {
+                color: #00bfff;
+                /* Keep strong color */
+            }
+
+            /* Move Education section visually after Who I Am on mobile */
+            /* Ensure all sections within .main-content-wrapper are treated as flex items */
+            .main-content-wrapper > div {
+                order: initial; /* Reset order for all direct children */
+            }
+
+            /* Now explicitly set the order for the desired sections */
+            .who-i-am-card {
+                order: 1;
+            }
+
+            .education-section {
+                order: 2;
+                margin-bottom: 20px;
+                /* Add some space after the education box */
+            }
+
+            .wakatime-section {
+                order: 3;
+            }
+
+            .freelance-stats-section {
+                order: 4;
+            }
+
+            .github-section {
+                order: 5;
+            }
+            /* --- End Mobile Reordering and Education Box --- */
         }
 
         @media (max-width: 480px) {
             .header-logo {
-                font-size: 1.4em; /* Slightly smaller logo */
+                font-size: 1.4em;
+                /* Slightly smaller logo */
             }
 
             .main-nav a {
@@ -694,46 +762,56 @@
             }
 
             .about-page-section>h2 {
-                font-size: 1.7em; /* Smaller main heading for small phones */
+                font-size: 1.7em;
+                /* Smaller main heading for small phones */
             }
 
             .about-page-section h3 {
-                font-size: 1.2em; /* Smaller subheadings for small phones */
+                font-size: 1.2em;
+                /* Smaller subheadings for small phones */
             }
 
             .profile-pic {
-                width: 100px; /* Even smaller profile picture for very small screens */
+                width: 100px;
+                /* Even smaller profile picture for very small screens */
                 height: 100px;
             }
 
             .who-i-am p {
-                font-size: 0.9em; /* Further reduced text size */
+                font-size: 0.9em;
+                /* Further reduced text size */
             }
 
             .education-item p,
             .education-item strong {
-                font-size: 0.85em; /* Further reduced font size for education details */
+                font-size: 0.85em;
+                /* Further reduced font size for education details */
             }
 
             .stat-item h4 {
-                font-size: 1.6em; /* Smaller stat numbers */
+                font-size: 1.6em;
+                /* Smaller stat numbers */
             }
 
             .stat-item p {
-                font-size: 0.75em; /* Smaller stat descriptions */
+                font-size: 0.75em;
+                /* Smaller stat descriptions */
             }
 
             .stat-card h4 {
-                font-size: 1.1em; /* Smaller headings in stat cards */
+                font-size: 1.1em;
+                /* Smaller headings in stat cards */
             }
 
             .stat-card p,
             .stat-card ul li {
-                font-size: 0.8em; /* Smaller text in stat cards */
+                font-size: 0.8em;
+                /* Smaller text in stat cards */
             }
 
             .freelance-stats-grid-inner {
-                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Adjusted minwidth for smaller stats */
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                /* Adjusted minwidth for smaller stats */
             }
 
             .interest-item i {
@@ -753,6 +831,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
                 gap: 10px;
             }
+
             /* End Personal Interests Small Phone Adjustments */
         }
     </style>
@@ -813,8 +892,6 @@
                         <h4>Something</h4>
                         <img src="something.png" alt="[Contributions Graph Placeholder]">
                     </div>
-
-
                 </div>
             </div>
 

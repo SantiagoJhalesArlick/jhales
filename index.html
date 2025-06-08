@@ -144,7 +144,7 @@
 
         .tagline {
             color: #d0d0d0;
-            font-size: 1.5em;
+            font-size: 1.8em; /* Adjusted font size */
             margin-bottom: 40px;
             font-weight: 300;
         }
@@ -482,7 +482,7 @@
             }
 
             .tagline {
-                font-size: 1.2em;
+                font-size: 1.4em; /* Adjusted font size for 768px and below */
             }
 
             .hero-content p {
@@ -546,7 +546,7 @@
                 font-size: 2em;
             }
             .tagline {
-                font-size: 1em;
+                font-size: 1.2em; /* Adjusted font size for 480px and below */
             }
             .social-icons a {
                 font-size: 1.5em;
@@ -574,7 +574,7 @@
         <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
         <nav class="main-nav" id="main-nav-links">
             <a href="about.html"><i class="fas fa-user"></i> About</a>
-            <a href="#skills"><i class="fa fa-code"></i> Skills</a>
+            <a href="#skills"><i class="fa-brands fa-laravel"></i> Skills</a>
             <a href="#projects"><i class="fas fa-folder-open"></i> Projects</a>
             <!-- Updated to link to the new contact.html page -->
             <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
@@ -594,46 +594,7 @@
         </div>
     </div>
 
-    <!-- The index.html provided only has the hero section. I will add placeholder sections for skills and projects as they are linked in the navigation to ensure full functionality. -->
-    <section id="skills">
-        <h2>My Skills</h2>
-        <p>I possess a diverse skill set in web development, constantly learning and adapting to new technologies.</p>
-        <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>React.js</li>
-            <li>Node.js</li>
-            <li>Express.js</li>
-            <li>MongoDB</li>
-            <li>SQL</li>
-            <li>Git & GitHub</li>
-            <li>Responsive Design</li>
-            <li>UI/UX Principles</li>
-        </ul>
-    </section>
-
-    <section id="projects">
-        <h2>Recent Projects</h2>
-        <p>Here are some of the projects I've been working on, showcasing my capabilities in web development.</p>
-        <div class="projects-grid">
-            <div class="project-item">
-                <h3>Project Alpha</h3>
-                <p>A responsive e-commerce platform built with React and Node.js.</p>
-                <a href="#">View Project <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="project-item">
-                <h3>Project Beta</h3>
-                <p>A real-time chat application using WebSockets and Express.</p>
-                <a href="#">View Project <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="project-item">
-                <h3>Project Gamma</h3>
-                <p>A content management system developed with a custom PHP framework.</p>
-                <a href="#">View Project <i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </div>
-    </section>
+    
 
     <footer class="footer">
         <div class="footer-left">
@@ -696,18 +657,35 @@
             sectionObserver.observe(section);
         });
 
-        // JavaScript for the typewriter effect
+        // JavaScript for the typewriter effect (Updated for looping)
         document.addEventListener('DOMContentLoaded', () => {
             const textElement = document.getElementById('typewriter-output');
             const textToType = "Website Developer";
             let charIndex = 0;
             const typingSpeed = 100; // milliseconds per character
+            const deletingSpeed = 50; // milliseconds per character for deleting
+            const delayBeforeDelete = 1500; // delay before starting to delete
+            const delayBeforeType = 500; // delay before starting to type again
 
             function typeWriter() {
                 if (charIndex < textToType.length) {
                     textElement.textContent += textToType.charAt(charIndex);
                     charIndex++;
                     setTimeout(typeWriter, typingSpeed);
+                } else {
+                    // After typing, wait, then start deleting
+                    setTimeout(deleteWriter, delayBeforeDelete);
+                }
+            }
+
+            function deleteWriter() {
+                if (charIndex > 0) {
+                    textElement.textContent = textToType.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(deleteWriter, deletingSpeed);
+                } else {
+                    // After deleting, wait, then start typing again
+                    setTimeout(typeWriter, delayBeforeType);
                 }
             }
 

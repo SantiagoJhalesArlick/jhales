@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,605 +13,933 @@
     <!-- Google Fonts - Inter for a clean, modern look (combined from both sources) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-/* Combined body styles - prioritizing the #1a1a1a background from index.html */
-body {
-    font-family: 'Inter', Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-    margin: 0;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Header styles from your provided index.html */
-.header {
-    background-color: #1a1a1a;
-    padding: 20px 40px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    border-bottom: 1px solid #333333;
-}
-
-.header-logo {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #00bfff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.header-logo i {
-    font-size: 1.2em;
-    margin-right: 10px;
-    color: #00bfff;
-}
-
-.main-nav {
-    display: flex;
-    align-items: center;
-}
-
-.main-nav a {
-    color: #f0f0f0;
-    text-decoration: none;
-    margin-left: 30px;
-    font-size: 1.1em;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.2s ease;
-    position: relative;
-    padding-bottom: 5px;
-    display: inline-flex;
-    align-items: center;
-}
-
-.main-nav a i {
-    margin-right: 8px;
-    color: #f0f0f0;
-    transition: color 0.3s ease;
-}
-
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #00bfff;
-    transition: width 0.3s ease;
-}
-
-.main-nav a:hover::after,
-.main-nav a.active-link::after { /* Active link style for new header */
-    width: 100%;
-}
-
-.main-nav a:hover,
-.main-nav a.active-link { /* Active link style for new header */
-    color: #00bfff;
-    transform: translateY(-2px);
-}
-
-.main-nav a:hover i,
-.main-nav a.active-link i { /* Active link style for new header */
-    color: #00bfff;
-}
-
-.hamburger-menu {
-    display: none;
-    font-size: 1.8em;
-    color: #00bfff;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* Hero section styles (kept for reference, though not directly used on this page) */
-.hero-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 100px 20px 50px;
-    box-sizing: border-box;
-}
-
-.hero-content {
-    max-width: 900px;
-    padding: 20px;
-    animation: fadeIn 1s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-h1 {
-    color: #00bfff;
-    font-size: 4em;
-    margin-bottom: 10px;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-.tagline {
-    color: #d0d0d0;
-    font-size: 1.8em;
-    margin-bottom: 40px;
-    font-weight: 300;
-}
-
-.typewriter-text {
-    color: #00bfff;
-    min-height: 1.5em;
-    display: inline-block;
-    position: relative;
-}
-
-.typewriter-text::after {
-    content: '';
-    display: inline-block;
-    width: 2px;
-    height: 1.2em;
-    background-color: #00bfff;
-    animation: blink-caret 0.75s step-end infinite;
-    position: absolute;
-    top: 50%;
-    right: -5px;
-    transform: translateY(-50%);
-}
-
-@keyframes blink-caret {
-    from, to {
-        background-color: transparent;
-    }
-    50% {
-        background-color: #00bfff;
-    }
-}
-
-.hero-content p {
-    line-height: 1.8;
-    margin-bottom: 40px;
-    font-size: 1.1em;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.social-icons {
-    margin-bottom: 30px;
-}
-
-.social-icons a {
-    color: #f0f0f0;
-    font-size: 2.2em;
-    margin: 0 18px;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.social-icons a:hover {
-    color: #00bfff;
-    transform: scale(1.1);
-}
-
-.hero-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 30px;
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.hero-buttons.mobile-hidden {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #00bfff;
-    color: #fff;
-    padding: 16px 35px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-    width: 80%;
-    max-width: 300px;
-}
-
-.btn i {
-    margin-right: 8px;
-}
-
-.btn:hover {
-    background-color: #008fcc;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
-}
-
-.btn.secondary {
-    background-color: #333333;
-    box-shadow: none;
-}
-
-.btn.secondary:hover {
-    background-color: #444444;
-    box-shadow: none;
-}
-
-/* Section styles (kept for reference, though not directly used on this page for main content) */
-section {
-    padding: 100px 20px;
-    max-width: 1000px;
-    margin: 0 auto 50px auto;
-    text-align: center;
-    box-sizing: border-box;
-    background-color: #222222;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h2 {
-    color: #00bfff;
-    font-size: 3em;
-    margin-bottom: 40px;
-    font-weight: 700;
-}
-
-h3 {
-    color: #f0f0f0;
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-#about p {
-    max-width: 800px;
-    margin: 0 auto 20px;
-    font-size: 1.1em;
-}
-
-#skills ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-
-#skills li {
-    background-color: #3a3a3a;
-    padding: 12px 25px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 1.05em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#skills li:hover {
-    background-color: #00bfff;
-    color: #1a1a1a;
-    transform: translateY(-3px);
-}
-
-/* Project grid styles */
-.projects-grid {
-    display: grid;
-    /* Default to 2 columns on larger screens */
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px; /* Consistent gap between items */
-    margin-top: 50px;
-}
-
-/* --- START: Changes for Project Box Spacing --- */
-.container {
-    max-width: 1200px; /* Adjusted max-width for less empty side space */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 100px; /* Custom padding for desktop */
-    padding-right: 30px; /* Custom padding for desktop */
-}
-/* --- END: Changes for Project Box Spacing --- */
-
-.project-item {
-    background-color: #2b2b2b; /* Adjusted from gray-800 for consistency */
-    padding: 30px; /* Adjusted from p-6 */
-    border-radius: 10px; /* Adjusted from rounded-2xl */
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Custom shadow for consistency */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for consistency */
-}
-
-.project-item:hover {
-    transform: translateY(-5px); /* Adjusted from -translate-y-1 */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Custom shadow for consistency */
-}
-
-.project-item h3 {
-    color: #00bfff; /* Adjusted from white */
-    margin-top: 0;
-    font-size: 1.5em; /* Adjusted from text-3xl */
-}
-
-.project-item p {
-    font-size: 0.95em; /* Adjusted from text-lg */
-    margin-bottom: 20px; /* Adjusted from mb-6 */
-}
-
-.project-item .tech-tag { /* New class for technology tags */
-    background-color: #3f7a8e; /* A darker purple, closer to violet-600 */
-    color: #fff;
-    font-size: 0.875em; /* text-sm */
-    font-weight: 500;
-    padding: 0.5rem 1rem; /* px-4 py-2 */
-    border-radius: 9999px; /* rounded-full */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    display: inline-block; /* Ensure it respects padding */
-}
-
-.project-item .project-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 24px; /* px-6 py-3 */
-    border-radius: 9999px; /* rounded-full */
-    font-size: 1.125em; /* text-lg */
-    font-weight: 500;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.project-item .project-button.code {
-    background-color: #333333; /* bg-gray-700 */
-    color: #fff;
-    border: 1px solid #4a4a4a; /* border-gray-600 */
-}
-
-.project-item .project-button.code:hover {
-    background-color: #444444; /* hover:bg-gray-600 */
-    border-color: #555555; /* hover:border-gray-500 */
-}
-
-.project-item .project-button.demo {
-    background-color: #3f7a8e; /* bg-violet-700 */
-    color: #fff;
-    border: 1px solid #3f7a8e; /* border-violet-600 */
-}
-
-.project-item .project-button.demo:hover {
-    background-color: #3f7a8e; /* hover:bg-violet-600 */
-    border-color: #00bfff; /* hover:border-violet-500 */
-}
-
-/* Footer styles from your provided index.html */
-.footer {
-    background-color: #1a1a1a;
-    color: #f0f0f0;
-    padding: 30px 40px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    border-top: none;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-    flex-wrap: wrap;
-}
-
-.footer-left {
-    text-align: left;
-    flex-grow: 1;
-    min-width: 200px;
-    margin-right: 20px;
-}
-
-.footer-left h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.8em;
-    color: #00bfff;
-    font-weight: 700;
-}
-
-.footer-left p {
-    margin: 0;
-    font-size: 1.1em;
-    color: #d0d0d0;
-    opacity: 0.9;
-}
-
-.footer-social-icons {
-    display: flex;
-    gap: 15px;
-    flex-grow: 1;
-    justify-content: center;
-    min-width: 150px;
-    margin: 0 20px;
-}
-
-.footer-social-icons a {
-    color: #f0f0f0;
-    font-size: 1.5em;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #2b2b2b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-}
-
-.footer-social-icons a:hover {
-    background-color: #00bfff;
-    color: #1a1a1a;
-    transform: translateY(-3px);
-}
-
-.footer-right {
-    font-size: 0.9em;
-    color: #aaaaaa;
-    text-align: right;
-    flex-grow: 1;
-    min-width: 200px;
-    margin-left: 20px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 15px 20px;
-        position: fixed;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .main-nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        background-color: #222222;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        padding: 20px 0;
-        border-radius: 0 0 10px 10px;
-        transition: transform 0.3s ease-out;
-        transform: translateY(-100%);
-        box-sizing: border-box;
-    }
-
-    .main-nav.active {
-        display: flex;
-        transform: translateY(0);
-    }
-
-    .main-nav a {
-        margin: 10px 20px;
-        font-size: 1.2em;
-        width: fit-content;
-        align-self: flex-start;
-    }
-
-    .main-nav a::after {
-        left: 20px;
-    }
-
-    .hamburger-menu {
-        display: block;
-    }
-
-    section {
-        padding: 60px 15px;
-        margin-bottom: 30px;
-    }
-
-    h2 {
-        font-size: 2.4em;
-    }
-
-    h3 {
-        font-size: 1.6em;
-    }
-
-    #about p {
-        font-size: 1.1em;
-    }
-
-    #skills ul {
-        padding: 10px 20px;
-        font-size: 1.05em;
-    }
-
-    /* For mobile/tablet, ensure 1 column */
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* --- START: Changes for Project Box Spacing (Mobile) --- */
-    .container {
-        padding-left: 15px; /* Keep some padding on mobile */
-        padding-right: 15px; /* Keep some padding on mobile */
-    }
-    /* --- END: Changes for Project Box Spacing (Mobile) --- */
-
-    .footer {
-        flex-direction: column;
-        padding: 30px 15px;
-        text-align: center;
-    }
-
-    .footer-left,
-    .footer-right,
-    .footer-social-icons {
-        text-align: center;
-        min-width: unset;
-        margin: 0 0 15px 0;
-    }
-
-    .footer-social-icons {
-        order: -1;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    h2 {
-        font-size: 2em;
-    }
-
-    h3 {
-        font-size: 1.4em;
-    }
-
-    #about p {
-        font-size: 1em;
-    }
-
-    #skills li {
-        padding: 8px 15px;
-        font-size: 0.95em;
-    }
-}
+        /* Combined body styles - prioritizing the #1a1a1a background from index.html */
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header styles from your provided index.html */
+        .header {
+            background-color: #1a1a1a;
+            padding: 20px 40px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            border-bottom: 1px solid #333333;
+        }
+
+        .header-logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #00bfff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo i {
+            font-size: 1.2em;
+            margin-right: 10px;
+            color: #00bfff;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: #f0f0f0;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+            padding-bottom: 5px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .main-nav a i {
+            margin-right: 8px;
+            color: #f0f0f0;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #00bfff;
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active-link::after {
+            /* Active link style for new header */
+            width: 100%;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active-link {
+            /* Active link style for new header */
+            color: #00bfff;
+            transform: translateY(-2px);
+        }
+
+        .main-nav a:hover i,
+        .main-nav a.active-link i {
+            /* Active link style for new header */
+            color: #00bfff;
+        }
+
+        .hamburger-menu {
+            display: none;
+            font-size: 1.8em;
+            color: #00bfff;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero section styles (kept for reference, though not directly used on this page) */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 100px 20px 50px;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #00bfff;
+            font-size: 4em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            color: #d0d0d0;
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .typewriter-text {
+            color: #00bfff;
+            min-height: 1.5em;
+            display: inline-block;
+            position: relative;
+        }
+
+        .typewriter-text::after {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: #00bfff;
+            animation: blink-caret 0.75s step-end infinite;
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: #00bfff;
+            }
+        }
+
+        .hero-content p {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-icons {
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: #f0f0f0;
+            font-size: 2.2em;
+            margin: 0 18px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00bfff;
+            transform: scale(1.1);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .hero-buttons.mobile-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #00bfff;
+            color: #fff;
+            padding: 16px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn:hover {
+            background-color: #008fcc;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+        }
+
+        .btn.secondary {
+            background-color: #333333;
+            box-shadow: none;
+        }
+
+        .btn.secondary:hover {
+            background-color: #444444;
+            box-shadow: none;
+        }
+
+        /* Section styles (kept for reference, though not directly used on this page for main content) */
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #222222;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: #00bfff;
+            font-size: 3em;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: #f0f0f0;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 1.1em;
+        }
+
+        #skills ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        #skills li {
+            background-color: #3a3a3a;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1.05em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #skills li:hover {
+            background-color: #00bfff;
+            color: #1a1a1a;
+            transform: translateY(-3px);
+        }
+
+        /* Project grid styles */
+        .projects-grid {
+            display: grid;
+            /* Default to 2 columns on larger screens */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            /* Consistent gap between items */
+            margin-top: 50px;
+        }
+
+        /* --- START: Changes for Project Box Spacing --- */
+        .container {
+            max-width: 1200px;
+            /* Adjusted max-width for less empty side space */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 100px;
+            /* Custom padding for desktop */
+            padding-right: 30px;
+            /* Custom padding for desktop */
+        }
+
+        /* --- END: Changes for Project Box Spacing --- */
+
+        .project-item {
+            background-color: #2b2b2b;
+            /* Adjusted from gray-800 for consistency */
+            padding: 30px;
+            /* Adjusted from p-6 */
+            border-radius: 10px;
+            /* Adjusted from rounded-2xl */
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            /* Custom shadow for consistency */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Transition for consistency */
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            /* Adjusted from -translate-y-1 */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            /* Custom shadow for consistency */
+        }
+
+        .project-item h3 {
+            color: #00bfff;
+            /* Adjusted from white */
+            margin-top: 0;
+            font-size: 1.5em;
+            /* Adjusted from text-3xl */
+        }
+
+        .project-item p {
+            font-size: 0.95em;
+            /* Adjusted from text-lg */
+            margin-bottom: 20px;
+            /* Adjusted from mb-6 */
+        }
+
+        .project-item .tech-tag {
+            /* New class for technology tags */
+            background-color: #3f7a8e;
+            /* A darker purple, closer to violet-600 */
+            color: #fff;
+            font-size: 0.875em;
+            /* text-sm */
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            /* px-4 py-2 */
+            border-radius: 9999px;
+            /* rounded-full */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            /* Ensure it respects padding */
+        }
+
+        .project-item .project-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            /* px-6 py-3 */
+            border-radius: 9999px;
+            /* rounded-full */
+            font-size: 1.125em;
+            /* text-lg */
+            font-weight: 500;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item .project-button.code {
+            background-color: #333333;
+            /* bg-gray-700 */
+            color: #fff;
+            border: 1px solid #4a4a4a;
+            /* border-gray-600 */
+        }
+
+        .project-item .project-button.code:hover {
+            background-color: #444444;
+            /* hover:bg-gray-600 */
+            border-color: #555555;
+            /* hover:border-gray-500 */
+        }
+
+        .project-item .project-button.demo {
+            background-color: #3f7a8e;
+            /* bg-violet-700 */
+            color: #fff;
+            border: 1px solid #3f7a8e;
+            /* border-violet-600 */
+        }
+
+        .project-item .project-button.demo:hover {
+            background-color: #3f7a8e;
+            /* hover:bg-violet-600 */
+            border-color: #00bfff;
+            /* hover:border-violet-500 */
+        }
+
+        /* Footer styles from your provided index.html */
+        .footer {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            padding: 30px 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-top: none;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap;
+        }
+
+        .footer-left {
+            text-align: left;
+            flex-grow: 1;
+            min-width: 200px;
+            margin-right: 20px;
+        }
+
+        .footer-left h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em;
+            color: #00bfff;
+            font-weight: 700;
+        }
+
+        .footer-left p {
+            margin: 0;
+            font-size: 1.1em;
+            color: #d0d0d0;
+            opacity: 0.9;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 15px;
+            flex-grow: 1;
+            justify-content: center;
+            min-width: 150px;
+            margin: 0 20px;
+        }
+
+        .footer-social-icons a {
+            color: #f0f0f0;
+            font-size: 1.5em;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .footer-social-icons a:hover {
+            background-color: #00bfff;
+            color: #1a1a1a;
+            transform: translateY(-3px);
+        }
+
+        .footer-right {
+            font-size: 0.9em;
+            color: #aaaaaa;
+            text-align: right;
+            flex-grow: 1;
+            min-width: 200px;
+            margin-left: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px 20px;
+                position: fixed;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background-color: #222222;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                padding: 20px 0;
+                border-radius: 0 0 10px 10px;
+                transition: transform 0.3s ease-out;
+                transform: translateY(-100%);
+                box-sizing: border-box;
+            }
+
+            .main-nav.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .main-nav a {
+                margin: 10px 20px;
+                font-size: 1.2em;
+                width: fit-content;
+                align-self: flex-start;
+            }
+
+            .main-nav a::after {
+                left: 20px;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            section {
+                padding: 60px 15px;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 2.4em;
+            }
+
+            h3 {
+                font-size: 1.6em;
+            }
+
+            #about p {
+                font-size: 1.1em;
+            }
+
+            #skills ul {
+                padding: 10px 20px;
+                font-size: 1.05em;
+            }
+
+            /* For mobile/tablet, ensure 1 column */
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* --- START: Changes for Project Box Spacing (Mobile) --- */
+            .container {
+                padding-left: 15px;
+                /* Keep some padding on mobile */
+                padding-right: 15px;
+                /* Keep some padding on mobile */
+            }
+
+            /* --- END: Changes for Project Box Spacing (Mobile) --- */
+
+            .footer {
+                flex-direction: column;
+                padding: 30px 15px;
+                text-align: center;
+            }
+
+            .footer-left,
+            .footer-right,
+            .footer-social-icons {
+                text-align: center;
+                min-width: unset;
+                margin: 0 0 15px 0;
+            }
+
+            .footer-social-icons {
+                order: -1;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 2em;
+            }
+
+            h3 {
+                font-size: 1.4em;
+            }
+
+            #about p {
+                font-size: 1em;
+            }
+
+            #skills li {
+                padding: 8px 15px;
+                font-size: 0.95em;
+            }
+        }
+
+        /* Floating Chatbot Toggle Button styles */
+        .chatbot-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00bfff; /* Accent color */
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 10000; /* Ensure it's above other content */
+        }
+
+        .chatbot-toggle-btn:hover {
+            background-color: #008fcc;
+            transform: scale(1.05);
+        }
+
+        /* Chatbot specific styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px; /* Slightly wider to match image */
+            height: 550px; /* Taller to match image */
+            background-color: #2b2b2b; /* Darker background for chatbox */
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0); /* Hidden by default */
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+            z-index: 9999;
+        }
+
+        .chatbot-container.active {
+            transform: scale(1); /* Show when active */
+        }
+
+        .chatbot-header {
+            background-color: #1a1a1a; /* Darker header */
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #333333;
+            color: #f0f0f0;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .chatbot-header .profile-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #00bfff; /* Accent color for icon background */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a; /* Dark text for icon */
+            font-size: 1.5em;
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #222222; /* Chat background */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative; /* For loader */
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 15px;
+            word-wrap: break-word;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .message.user {
+            background-color: #00bfff; /* User message accent */
+            color: #1a1a1a;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px; /* Tail of chat bubble */
+        }
+
+        .message.bot {
+            background-color: #3a3a3a; /* Bot message background */
+            color: #f0f0f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px; /* Tail of chat bubble */
+        }
+
+        .message-time {
+            font-size: 0.75em;
+            color: #aaaaaa;
+            margin-top: 5px;
+            text-align: right;
+            opacity: 0.8;
+        }
+        .message.bot .message-time {
+            text-align: left;
+        }
+
+
+        .chatbot-input-area {
+            padding: 15px 20px;
+            background-color: #1a1a1a; /* Input area background */
+            border-top: 1px solid #333333;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chatbot-input-area input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border-radius: 25px; /* More rounded */
+            background-color: #3a3a3a;
+            border: 1px solid #555555;
+            color: #f0f0f0;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chatbot-input-area input:focus {
+            border-color: #00bfff;
+            box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.2);
+        }
+
+        .chatbot-input-area button {
+            background-color: #00bfff;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px; /* More rounded */
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex; /* For icon inside button */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-input-area button:hover {
+            background-color: #008fcc;
+            transform: translateY(-1px);
+        }
+
+        .chat-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center suggestions */
+            gap: 10px;
+            padding: 10px 20px 20px;
+            background-color: #2b2b2b; /* Match chatbox background */
+            border-top: 1px solid #333333;
+        }
+
+        .chat-suggestions button {
+            background-color: #3a3a3a; /* Darker grey for suggestions */
+            color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #555555; /* Subtle border */
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .chat-suggestions button:hover {
+            background-color: #00bfff; /* Accent color on hover */
+            color: #1a1a1a; /* Dark text on hover */
+            border-color: #00bfff;
+        }
+
+        /* Loader styles */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #00bfff; /* Blue accent */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            left: 20px; /* Position next to bot message */
+            bottom: 10px; /* Adjust as needed */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hide the regular scrollbar for chatbot messages but allow scrolling */
+        .chatbot-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: #222222; /* Match chat background */
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: #555555;
+            border-radius: 3px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb:hover {
+            background: #777777;
+        }
+
+        /* Responsive adjustments for chatbot */
+        @media (max-width: 640px) {
+            .chatbot-container {
+                width: 90%;
+                height: 80vh; /* Make it take up more screen height on small devices */
+                right: 5%;
+                bottom: 5%;
+                border-radius: 10px;
+            }
+
+            .chatbot-toggle-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chatbot-header {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+
+            .chatbot-messages {
+                padding: 15px;
+            }
+
+            .message {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+
+            .chatbot-input-area {
+                padding: 10px 15px;
+            }
+
+            .chatbot-input-area input {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+
+            .chatbot-input-area button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            .chat-suggestions {
+                padding: 10px 15px;
+                gap: 8px;
+            }
+
+            .chat-suggestions button {
+                padding: 7px 12px;
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Header (from your index.html) -->
@@ -621,18 +950,21 @@ h3 {
         <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
         <nav class="main-nav" id="main-nav-links">
             <a href="about.html"><i class="fas fa-user"></i> About</a>
-            <a href="projects.html" class="active-link"><i class="fas fa-folder-open"></i> Projects</a> <!-- Marked Projects as active -->
+            <a href="projects.html" class="active-link"><i class="fas fa-folder-open"></i> Projects</a>
+            <!-- Marked Projects as active -->
             <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
     </header>
 
     <!-- Main Content Area - Projects Section (from portfolio-project-section) -->
-    <main class="container mx-auto px-4 py-12 md:py-20" style="padding-top: 100px;"> <!-- Added padding-top to account for fixed header -->
+    <main class="container mx-auto px-4 py-12 md:py-20" style="padding-top: 100px;">
+        <!-- Added padding-top to account for fixed header -->
         <!-- Section Header -->
         <div class="text-center md:text-left mb-12">
             <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">10 Projects</h1>
             <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto md:mx-0">
-                Here are some of the projects I've worked on. Each represents different skills and technologies I've learned.
+                Here are some of the projects I've worked on. Each represents different skills and technologies I've
+                learned.
             </p>
         </div>
 
@@ -643,7 +975,8 @@ h3 {
             <div class="project-item">
                 <!-- Project Image (Placeholder) -->
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project1.png" alt="System1" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project1.png" alt="System1"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Personal Stylist Scheduling System</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -662,12 +995,23 @@ h3 {
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
                         <!-- Code Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
                         <!-- Play Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -677,7 +1021,8 @@ h3 {
             <div class="project-item">
                 <!-- Project Image (Placeholder) -->
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project2.jpg" alt="Student Portal with E-Wallet Dashboard" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project2.jpg" alt="Student Portal with E-Wallet Dashboard"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Student Portal with E-Wallet</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -696,12 +1041,23 @@ h3 {
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
                         <!-- Code Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
                         <!-- Play Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -710,11 +1066,13 @@ h3 {
             <!-- Project Card 3: E-commerce Website -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project3.png" alt="E-commerce Website" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project3.png" alt="E-commerce Website"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Sparkle Auto Wash</h3>
                 <p class="text-gray-400 mb-6 text-lg">
-                    A fully responsive e-commerce site with product listings, shopping cart, and secure checkout, built for scalability.
+                    A fully responsive e-commerce site with product listings, shopping cart, and secure checkout, built
+                    for scalability.
                 </p>
                 <div class="flex flex-wrap gap-3 mb-6">
                     <span class="tech-tag">React</span>
@@ -724,11 +1082,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -737,11 +1106,13 @@ h3 {
             <!-- Project Card 4: Social Media Dashboard -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project4.png" alt="Social Media Dashboard" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project4.png" alt="Social Media Dashboard"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Social Media Analytics Dashboard</h3>
                 <p class="text-gray-400 mb-6 text-lg">
-                    An intuitive dashboard for tracking social media engagement, audience growth, and content performance.
+                    An intuitive dashboard for tracking social media engagement, audience growth, and content
+                    performance.
                 </p>
                 <div class="flex flex-wrap gap-3 mb-6">
                     <span class="tech-tag">Node.js</span>
@@ -751,11 +1122,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -764,11 +1146,13 @@ h3 {
             <!-- Project Card 5: Recipe Finder App -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project5.png" alt="Recipe Finder App" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project5.png" alt="Recipe Finder App"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Tappy Scanner QR</h3>
                 <p class="text-gray-400 mb-6 text-lg">
-                    A web application allowing users to search for recipes, view ingredients, and step-by-step instructions.
+                    A web application allowing users to search for recipes, view ingredients, and step-by-step
+                    instructions.
                 </p>
                 <div class="flex flex-wrap gap-3 mb-6">
                     <span class="tech-tag">Html</span>
@@ -779,11 +1163,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -792,7 +1187,8 @@ h3 {
             <!-- Project Card 6: Weather Dashboard -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project6.png" alt="Weather Dashboard" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project6.png" alt="Weather Dashboard"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Static Website</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -806,11 +1202,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -819,7 +1226,8 @@ h3 {
             <!-- Project Card 7: Task Management App -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project7.png" alt="Task Management App" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project7.png" alt="Task Management App"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Hardware Inventory Management System</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -833,11 +1241,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -846,7 +1265,8 @@ h3 {
             <!-- Project Card 8: Portfolio Website V2 -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project8.png" alt="Portfolio Website V2" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project8.png" alt="Portfolio Website V2"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Simple Maze Game</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -861,11 +1281,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -874,7 +1305,8 @@ h3 {
             <!-- Project Card 9: Chat Application -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project9.png" alt="Chat Application" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project9.png" alt="Chat Application"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">Real-time Chat Application</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -890,11 +1322,22 @@ h3 {
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -903,7 +1346,8 @@ h3 {
             <!-- Project Card 10: Online Quiz Platform -->
             <div class="project-item">
                 <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project10.png" alt="Online Quiz Platform" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                    <img src="project10.png" alt="Online Quiz Platform"
+                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
                 </div>
                 <h3 class="text-3xl font-semibold text-white mb-3">DermPro System</h3>
                 <p class="text-gray-400 mb-6 text-lg">
@@ -918,12 +1362,23 @@ h3 {
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#" class="project-button code">
                         <!-- Code Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
                         Code
                     </a>
                     <a href="#" class="project-button demo">
                         <!-- Play Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Live Demo
                     </a>
                 </div>
@@ -940,7 +1395,8 @@ h3 {
         </div>
         <div class="footer-social-icons">
             <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
             <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
@@ -948,6 +1404,42 @@ h3 {
             &copy; <span id="current-year"></span> Jhales Santiago. All rights reserved.
         </div>
     </footer>
+
+    <!-- Floating Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle-btn">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Chatbot Container (moved from ai.html) -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-header">
+            <span class="profile-icon"><i class="fas fa-robot"></i></span>
+            <div>
+                <div class="font-bold">Portfolio Assistant</div>
+                <div class="text-xs text-gray-400">Online</div>
+            </div>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <!-- Initial bot message -->
+            <div class="message bot">
+                <p>Hello, welcome to my portfolio! How can I help you today?</p>
+                <div class="message-time">
+                    <span class="current-time"></span>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="chat-suggestions">
+            <button class="suggestion-btn" data-query="Tell me about your portfolio">Tell me about your portfolio</button>
+            <button class="suggestion-btn" data-query="Show me your projects">Show me your projects</button>
+            <button class="suggestion-btn" data-query="What are your skills?">What are your skills?</button>
+            <button class="suggestion-btn" data-query="Work experience">Work experience</button>
+            <button class="suggestion-btn" data-query="Contact information">Contact information</button>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -973,6 +1465,132 @@ h3 {
                 });
             }
         });
+         // Chatbot functionality (copied from ai.html)
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+
+        // Function to get current time for messages
+        function getCurrentTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const strMinutes = minutes < 10 ? '0' + minutes : minutes;
+            return `${hours}:${strMinutes} ${ampm}`;
+        }
+
+        // Update all current time elements initially
+        document.querySelectorAll('.current-time').forEach(el => {
+            el.textContent = getCurrentTime();
+        });
+
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        // Function to add a message to the chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.innerHTML = `<p>${text}</p><div class="message-time">${getCurrentTime()}</div>`;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to bottom
+        }
+
+        // Handle AI response
+        async function getAiResponse(prompt) {
+            // Add a "typing" indicator or loader
+            const loaderDiv = document.createElement('div');
+            loaderDiv.classList.add('loader');
+            chatbotMessages.appendChild(loaderDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            let botResponse = "";
+
+            // Check for predefined queries
+            if (prompt.toLowerCase().includes("tell me about your portfolio")) {
+                botResponse = "My portfolio showcases my work as a Full-Stack Web Developer. It includes various projects built with modern technologies, demonstrating my skills in both front-end and back-end development. You can explore different sections like About, Projects, and Contact to learn more!";
+            } else if (prompt.toLowerCase().includes("show me your projects")) {
+                botResponse = "I have several existing projects. You can navigate to the 'Projects' section of my portfolio to see them in detail. Some highlights include Tappy like you can scan it to your phone the tag and it will redirect to ur Website.";
+            } else if (prompt.toLowerCase().includes("what are your skills?")) {
+                botResponse = "I possess a strong skill set in full-stack web development, including expertise in [mention 2-3 key skills, e.g., HTML, CSS, JavaScript, React, Node.js, databases, etc.]. I'm passionate about building responsive and dynamic web applications.";
+            } else if (prompt.toLowerCase().includes("work experience")) {
+                botResponse = "You can find details about my work experience in the 'About' section of my portfolio, specifically under the 'Work Experience' subsection. I have experience in [mention a brief summary of experience, e.g., developing web applications, collaborating with teams, etc.].";
+            } else if (prompt.toLowerCase().includes("contact information")) {
+                botResponse = "You can reach out to me via the 'Contact' page on my portfolio. You'll find a form there to send me a message directly. I'm also available on [mention social media you listed in footer, e.g., LinkedIn, GitHub, Facebook].";
+            } else {
+                // If not a predefined query, call the Gemini API
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Will be provided by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        botResponse = result.candidates[0].content.parts[0].text;
+                    } else {
+                        botResponse = "Sorry, I couldn't get a response from the AI. Please try rephrasing or try a guided question.";
+                    }
+                } catch (error) {
+                    console.error("Error fetching AI response:", error);
+                    botResponse = "Oops! Something went wrong while connecting to the AI. Please try again later.";
+                }
+            }
+
+            // Remove loader after a 2-second delay and then add the bot message
+            setTimeout(() => {
+                if (chatbotMessages.contains(loaderDiv)) {
+                    chatbotMessages.removeChild(loaderDiv);
+                }
+                addMessage(botResponse, 'bot');
+            }, 2000); // 2000 milliseconds = 2 seconds
+        }
+
+
+        // Handle sending messages
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                getAiResponse(message);
+                userInput.value = ''; // Clear input
+            }
+        });
+
+        // Allow sending message with Enter key
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+
+        // Handle suggestion button clicks
+        suggestionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const query = button.dataset.query;
+                addMessage(query, 'user');
+                getAiResponse(query);
+            });
+        });
     </script>
 </body>
+
 </html>

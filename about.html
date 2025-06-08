@@ -539,6 +539,290 @@
                 padding: 10px;
             }
         }
+        /* Floating Chatbot Toggle Button styles */
+        .chatbot-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00bfff; /* Accent color */
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 10000; /* Ensure it's above other content */
+        }
+
+        .chatbot-toggle-btn:hover {
+            background-color: #008fcc;
+            transform: scale(1.05);
+        }
+
+        /* Chatbot specific styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px; /* Slightly wider to match image */
+            height: 550px; /* Taller to match image */
+            background-color: #2b2b2b; /* Darker background for chatbox */
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); /* Stronger shadow */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0); /* Hidden by default */
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+            z-index: 9999;
+        }
+
+        .chatbot-container.active {
+            transform: scale(1); /* Show when active */
+        }
+
+        .chatbot-header {
+            background-color: #1a1a1a; /* Darker header */
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #333333;
+            color: #f0f0f0;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .chatbot-header .profile-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #00bfff; /* Accent color for icon background */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a; /* Dark text for icon */
+            font-size: 1.5em;
+        }
+
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #222222; /* Chat background */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative; /* For loader */
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 15px;
+            word-wrap: break-word;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .message.user {
+            background-color: #00bfff; /* User message accent */
+            color: #1a1a1a;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px; /* Tail of chat bubble */
+        }
+
+        .message.bot {
+            background-color: #3a3a3a; /* Bot message background */
+            color: #f0f0f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px; /* Tail of chat bubble */
+        }
+
+        .message-time {
+            font-size: 0.75em;
+            color: #aaaaaa;
+            margin-top: 5px;
+            text-align: right;
+            opacity: 0.8;
+        }
+        .message.bot .message-time {
+            text-align: left;
+        }
+
+
+        .chatbot-input-area {
+            padding: 15px 20px;
+            background-color: #1a1a1a; /* Input area background */
+            border-top: 1px solid #333333;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .chatbot-input-area input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border-radius: 25px; /* More rounded */
+            background-color: #3a3a3a;
+            border: 1px solid #555555;
+            color: #f0f0f0;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chatbot-input-area input:focus {
+            border-color: #00bfff;
+            box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.2);
+        }
+
+        .chatbot-input-area button {
+            background-color: #00bfff;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px; /* More rounded */
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex; /* For icon inside button */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-input-area button:hover {
+            background-color: #008fcc;
+            transform: translateY(-1px);
+        }
+
+        .chat-suggestions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center suggestions */
+            gap: 10px;
+            padding: 10px 20px 20px;
+            background-color: #2b2b2b; /* Match chatbox background */
+            border-top: 1px solid #333333;
+        }
+
+        .chat-suggestions button {
+            background-color: #3a3a3a; /* Darker grey for suggestions */
+            color: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #555555; /* Subtle border */
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .chat-suggestions button:hover {
+            background-color: #00bfff; /* Accent color on hover */
+            color: #1a1a1a; /* Dark text on hover */
+            border-color: #00bfff;
+        }
+
+        /* Loader styles */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #00bfff; /* Blue accent */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            left: 20px; /* Position next to bot message */
+            bottom: 10px; /* Adjust as needed */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hide the regular scrollbar for chatbot messages but allow scrolling */
+        .chatbot-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: #222222; /* Match chat background */
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: #555555;
+            border-radius: 3px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb:hover {
+            background: #777777;
+        }
+
+        /* Responsive adjustments for chatbot */
+        @media (max-width: 640px) {
+            .chatbot-container {
+                width: 90%;
+                height: 80vh; /* Make it take up more screen height on small devices */
+                right: 5%;
+                bottom: 5%;
+                border-radius: 10px;
+            }
+
+            .chatbot-toggle-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .chatbot-header {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+
+            .chatbot-messages {
+                padding: 15px;
+            }
+
+            .message {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+
+            .chatbot-input-area {
+                padding: 10px 15px;
+            }
+
+            .chatbot-input-area input {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+
+            .chatbot-input-area button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            .chat-suggestions {
+                padding: 10px 15px;
+                gap: 8px;
+            }
+
+            .chat-suggestions button {
+                padding: 7px 12px;
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 
@@ -657,6 +941,41 @@
             &copy; <span id="current-year"></span> Jhales Santiago. All rights reserved.
         </div>
     </footer>
+<!-- Floating Chatbot Toggle Button -->
+    <button id="chatbot-toggle" class="chatbot-toggle-btn">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- Chatbot Container (moved from ai.html) -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div class="chatbot-header">
+            <span class="profile-icon"><i class="fas fa-robot"></i></span>
+            <div>
+                <div class="font-bold">Portfolio Assistant</div>
+                <div class="text-xs text-gray-400">Online</div>
+            </div>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages">
+            <!-- Initial bot message -->
+            <div class="message bot">
+                <p>Hello, welcome to my portfolio! How can I help you today?</p>
+                <div class="message-time">
+                    <span class="current-time"></span>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="chat-suggestions">
+            <button class="suggestion-btn" data-query="Tell me about your portfolio">Tell me about your portfolio</button>
+            <button class="suggestion-btn" data-query="Show me your projects">Show me your projects</button>
+            <button class="suggestion-btn" data-query="What are your skills?">What are your skills?</button>
+            <button class="suggestion-btn" data-query="Work experience">Work experience</button>
+            <button class="suggestion-btn" data-query="Contact information">Contact information</button>
+        </div>
+    </div>
 
     <script>
         // Set current year in footer
@@ -713,6 +1032,131 @@
                 aboutLink.classList.remove('active-nav-link');
             }
         }
+         // Chatbot functionality (copied from ai.html)
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const suggestionButtons = document.querySelectorAll('.suggestion-btn');
+
+        // Function to get current time for messages
+        function getCurrentTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const strMinutes = minutes < 10 ? '0' + minutes : minutes;
+            return `${hours}:${strMinutes} ${ampm}`;
+        }
+
+        // Update all current time elements initially
+        document.querySelectorAll('.current-time').forEach(el => {
+            el.textContent = getCurrentTime();
+        });
+
+        // Toggle chatbot visibility
+        chatbotToggle.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        // Function to add a message to the chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.innerHTML = `<p>${text}</p><div class="message-time">${getCurrentTime()}</div>`;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight; // Scroll to bottom
+        }
+
+        // Handle AI response
+        async function getAiResponse(prompt) {
+            // Add a "typing" indicator or loader
+            const loaderDiv = document.createElement('div');
+            loaderDiv.classList.add('loader');
+            chatbotMessages.appendChild(loaderDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            let botResponse = "";
+
+            // Check for predefined queries
+            if (prompt.toLowerCase().includes("tell me about your portfolio")) {
+                botResponse = "My portfolio showcases my work as a Full-Stack Web Developer. It includes various projects built with modern technologies, demonstrating my skills in both front-end and back-end development. You can explore different sections like About, Projects, and Contact to learn more!";
+            } else if (prompt.toLowerCase().includes("show me your projects")) {
+                botResponse = "I have several existing projects. You can navigate to the 'Projects' section of my portfolio to see them in detail. Some highlights include Tappy like you can scan it to your phone the tag and it will redirect to ur Website.";
+            } else if (prompt.toLowerCase().includes("what are your skills?")) {
+                botResponse = "I possess a strong skill set in full-stack web development, including expertise in [mention 2-3 key skills, e.g., HTML, CSS, JavaScript, React, Node.js, databases, etc.]. I'm passionate about building responsive and dynamic web applications.";
+            } else if (prompt.toLowerCase().includes("work experience")) {
+                botResponse = "You can find details about my work experience in the 'About' section of my portfolio, specifically under the 'Work Experience' subsection. I have experience in [mention a brief summary of experience, e.g., developing web applications, collaborating with teams, etc.].";
+            } else if (prompt.toLowerCase().includes("contact information")) {
+                botResponse = "You can reach out to me via the 'Contact' page on my portfolio. You'll find a form there to send me a message directly. I'm also available on [mention social media you listed in footer, e.g., LinkedIn, GitHub, Facebook].";
+            } else {
+                // If not a predefined query, call the Gemini API
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Will be provided by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        botResponse = result.candidates[0].content.parts[0].text;
+                    } else {
+                        botResponse = "Sorry, I couldn't get a response from the AI. Please try rephrasing or try a guided question.";
+                    }
+                } catch (error) {
+                    console.error("Error fetching AI response:", error);
+                    botResponse = "Oops! Something went wrong while connecting to the AI. Please try again later.";
+                }
+            }
+
+            // Remove loader after a 2-second delay and then add the bot message
+            setTimeout(() => {
+                if (chatbotMessages.contains(loaderDiv)) {
+                    chatbotMessages.removeChild(loaderDiv);
+                }
+                addMessage(botResponse, 'bot');
+            }, 2000); // 2000 milliseconds = 2 seconds
+        }
+
+
+        // Handle sending messages
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                getAiResponse(message);
+                userInput.value = ''; // Clear input
+            }
+        });
+
+        // Allow sending message with Enter key
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+
+        // Handle suggestion button clicks
+        suggestionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const query = button.dataset.query;
+                addMessage(query, 'user');
+                getAiResponse(query);
+            });
+        });
     </script>
 </body>
 

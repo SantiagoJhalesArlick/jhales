@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
     <title>About - MyPortfolio</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* ------------------------- */
-        /* GLOBAL & ROOT STYLES      */
+        /* GLOBAL & ROOT STYLES      */
         /* ------------------------- */
         :root {
             --primary-color: #00bfff;
@@ -32,9 +32,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        
+
         /* ------------------------- */
-        /* HEADER & NAVIGATION       */
+        /* HEADER & NAVIGATION       */
         /* ------------------------- */
         .header {
             background-color: var(--background-color);
@@ -97,7 +97,7 @@
         .main-nav a:hover i {
             color: var(--primary-color);
         }
-        
+
         .main-nav a::after {
             content: '';
             position: absolute;
@@ -123,7 +123,7 @@
         }
 
         /* ------------------------- */
-        /* MAIN CONTENT & LAYOUT     */
+        /* MAIN CONTENT & LAYOUT     */
         /* ------------------------- */
         .about-page-section {
             padding: 120px 40px 50px;
@@ -132,7 +132,7 @@
             box-sizing: border-box;
         }
 
-        .about-page-section > h2 {
+        .about-page-section>h2 {
             font-size: 3em;
             font-weight: 700;
             margin-top: 0;
@@ -164,11 +164,12 @@
             flex-direction: column;
             gap: 30px;
             flex: 1;
-            min-width: 0; /* Prevents flexbox overflow */
+            min-width: 0;
+            /* Prevents flexbox overflow */
         }
 
         /* ------------------------- */
-        /* CARD COMPONENTS           */
+        /* CARD COMPONENTS           */
         /* ------------------------- */
         .who-i-am-card,
         .education-section,
@@ -184,11 +185,11 @@
             flex-direction: column;
             gap: 20px;
         }
-        
+
         .who-i-am-card {
             align-items: center;
         }
-        
+
         .who-i-am-card h3,
         .education-section h3,
         .freelance-stats-section h3,
@@ -199,7 +200,7 @@
             font-weight: 600;
             margin: 0;
         }
-        
+
         .profile-pic {
             width: 180px;
             height: 180px;
@@ -214,7 +215,7 @@
             border-radius: 50%;
             object-fit: cover;
         }
-        
+
         .stat-card {
             background-color: var(--surface-color);
             padding: 20px;
@@ -223,12 +224,13 @@
             width: 100%;
             box-sizing: border-box;
         }
-        
+
         .stat-card p {
             font-size: 0.95em;
             color: var(--text-muted-color);
             margin: 0 0 10px 0;
         }
+
         .stat-card p:last-child {
             margin-bottom: 0;
         }
@@ -260,29 +262,29 @@
             color: var(--primary-color);
             font-weight: bold;
         }
-        
+
         .education-item p {
             margin: 5px 0;
             font-size: 1em;
             color: var(--text-muted-color);
         }
-        
+
         .education-item p:first-child {
             color: var(--text-color);
             font-weight: bold;
         }
-        
+
         /* ------------------------- */
-        /* STATS & INTERESTS GRIDS   */
+        /* STATS & INTERESTS GRIDS   */
         /* ------------------------- */
         .freelance-stats-grid-inner,
         .personal-interests-grid {
             display: grid;
             gap: 15px;
         }
-        
+
         .freelance-stats-grid-inner {
-             grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .personal-interests-grid {
@@ -301,7 +303,7 @@
             justify-content: center;
             text-align: center;
         }
-        
+
         .stat-item i {
             font-size: 2em;
             color: var(--primary-color);
@@ -320,7 +322,7 @@
             color: var(--text-muted-color);
             margin: 5px 0 0 0;
         }
-        
+
         .interest-item {
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
@@ -348,9 +350,9 @@
         .interest-item:hover p {
             color: var(--background-color);
         }
-        
+
         /* ------------------------- */
-        /* FOOTER                    */
+        /* FOOTER                    */
         /* ------------------------- */
         .footer {
             background-color: var(--background-color);
@@ -412,39 +414,50 @@
         .footer-right {
             flex-grow: 1;
         }
-        .footer-left { text-align: left; }
-        .footer-right { text-align: right; }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
 
         /* ------------------------- */
-        /* RESPONSIVE MEDIA QUERIES  */
+        /* RESPONSIVE MEDIA QUERIES  */
         /* ------------------------- */
-        
+
         /* Tablet View */
         @media (max-width: 1024px) {
             .main-content-wrapper {
                 flex-direction: column;
             }
+
             .main-content-wrapper::after {
                 display: none;
             }
+
             .about-page-section {
                 padding: 100px 30px 30px;
             }
         }
-        
+
         /* Mobile View */
         @media (max-width: 768px) {
             .header {
                 padding: 15px 20px;
             }
+
             .hamburger-menu {
                 display: block;
             }
+
             .main-nav {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 65px; /* Adjusted for header height */
+                top: 65px;
+                /* Adjusted for header height */
                 left: 0;
                 width: 100%;
                 background-color: #222;
@@ -452,20 +465,25 @@
                 padding: 20px 0;
                 border-radius: 0 0 10px 10px;
             }
+
             .main-nav.active {
                 display: flex;
             }
+
             .main-nav a {
                 margin: 10px 20px;
                 font-size: 1.2em;
             }
+
             .about-page-section {
                 padding: 80px 20px 30px;
             }
-            .about-page-section > h2 {
+
+            .about-page-section>h2 {
                 font-size: 2.2em;
                 text-align: center;
             }
+
             .who-i-am-card h3,
             .education-section h3,
             .freelance-stats-section h3,
@@ -474,30 +492,37 @@
             .personal-interests-section h3 {
                 text-align: center;
             }
+
             .personal-interests-section h3 {
                 border-bottom: none;
             }
+
             .profile-pic {
                 width: 150px;
                 height: 150px;
             }
+
             .freelance-stats-grid-inner {
                 grid-template-columns: 1fr;
             }
+
             .footer {
                 flex-direction: column;
                 gap: 25px;
             }
-            .footer-left, .footer-right {
+
+            .footer-left,
+            .footer-right {
                 text-align: center;
             }
         }
-        
+
         /* Small Mobile View */
         @media (max-width: 480px) {
-            .about-page-section > h2 {
+            .about-page-section>h2 {
                 font-size: 1.8em;
             }
+
             .who-i-am-card h3,
             .education-section h3,
             .freelance-stats-section h3,
@@ -505,10 +530,12 @@
             .github-section h3 {
                 font-size: 1.4em;
             }
+
             .profile-pic {
                 width: 120px;
                 height: 120px;
             }
+
             .personal-interests-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -537,7 +564,7 @@
 
             <div class="main-content-wrapper">
                 <div class="about-left-column">
-                    
+
                     <div class="who-i-am-card">
                         <div class="profile-pic">
                             <img src="jhalespicture.jpg" alt="A portrait of Jhales Santiago. Based on the name and appearance, he could be of Filipino descent.">
@@ -546,6 +573,17 @@
                         <div class="stat-card">
                             <p>Hi, I'm Jhales Santiago, a passionate Website Developer from Quezon City, Metro Manila, Philippines, with a drive for creating both static and dynamic web applications.</p>
                             <p>I am currently a 4th year college student at Bestlink College of the Philippines, pursuing a degree in Information Technology. In my free time, I love to work on personal projects to expand my portfolio and experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="education-section">
+                        <h3>Education</h3>
+                        <div class="stat-card">
+                            <div class="education-item">
+                                <p>Bachelor of Science in Information Technology</p>
+                                <p>Bestlink College of the Philippines, 2025</p>
+                                <p>Currently in my 4th year of studies, focusing on Web Development.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -567,17 +605,6 @@
                 </div>
 
                 <div class="about-right-column">
-
-                    <div class="education-section">
-                        <h3>Education</h3>
-                        <div class="stat-card">
-                            <div class="education-item">
-                                <p>Bachelor of Science in Information Technology</p>
-                                <p>Bestlink College of the Philippines, 2025</p>
-                                <p>Currently in my 4th year of studies, focusing on Web Development.</p>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="freelance-stats-section">
                         <h3>Product Status</h3>

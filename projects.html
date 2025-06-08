@@ -471,7 +471,22 @@
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
             flex-wrap: wrap;
         }
+        .underline-footer-name {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 3px; /* Space between text and line */
+        }
 
+        .underline-footer-name::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* Thinner line */
+            background-color: #00bfff;
+            border-radius: 1px; /* Slightly rounded */
+        }
         .footer-left {
             text-align: left;
             flex-grow: 1;
@@ -973,424 +988,396 @@
 
             <!-- Project Card 1: Personal Stylist Scheduling System -->
             <div class="project-item">
-                <!-- Project Image (Placeholder) -->
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project1.png" alt="System1"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Personal Stylist Scheduling System</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    A comprehensive PSSS-based system designed to monitor student/office attendance efficiently,
-                    featuring real-time tracking, secure account management.
-                </p>
-                <!-- Technology Tags -->
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Php</span>
-                    <span class="tech-tag">Html5</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <!-- Code Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <!-- Play Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project1.png" alt="Personal Stylist Scheduling System"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
             </div>
-
-            <!-- Project Card 2: Student Portal with E-Wallet -->
-            <div class="project-item">
-                <!-- Project Image (Placeholder) -->
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project2.jpg" alt="Student Portal with E-Wallet Dashboard"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Student Portal with E-Wallet</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    An all-in-one platform for students to manage their accounts, make secure e-wallet transactions,
-                    and track transactions availability in real-time.
-                </p>
-                <!-- Technology Tags -->
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Laravel</span>
-                    <span class="tech-tag">Blade Template</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">jQuery</span>
-                    <span class="tech-tag">JavaScript</span>
-                </div>
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <!-- Code Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <!-- Play Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Personal Stylist Scheduling System</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This comprehensive system, built with PHP, efficiently schedules and manages personal stylist appointments. It includes features for real-time booking and client management.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">JavaScript</span>
             </div>
-
-            <!-- Project Card 3: Sparkle Auto Wash (Carwash Scheduled) -->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project3.png" alt="E-commerce Website"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Sparkle Auto Wash</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    A fully responsive e-commerce site with product listings, shopping cart, and secure checkout, built
-                    for scalability.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">MongoDB</span>
-                    <span class="tech-tag">Stripe API</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
             </div>
-
-            <!-- Project Card 4: Social Media Analytics Dashboard-->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project4.png" alt="Social Media Dashboard"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Social Media Analytics Dashboard</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    An intuitive dashboard for tracking social media engagement, audience growth, and content
-                    performance.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Scala</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card 5: Tappy Scanner QR if u scan on mobile nfc it reflect-->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project5.png" alt="Recipe Finder App"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Tappy Scanner QR</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    A web application allowing users to search for recipes, view ingredients, and step-by-step
-                    instructions.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Html</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Github</span>
-                    <span class="tech-tag">Vercel</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card 6: Static Profile Website-->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project6.png" alt="Weather Dashboard"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Static Website</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    Displays current weather conditions and forecasts based on user location or city search.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Html5</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card 7: Hardware Inventory Management System -->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project7.png" alt="Task Management App"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Hardware Inventory Management System</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    A web-based task manager with drag-and-drop functionality, due dates, and priority settings.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Angular</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">Material UI</span>
-                    <span class="tech-tag">RxJS</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card 8: Simple Maze Game -->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project8.png" alt="Portfolio Website V2"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Simple Maze Game</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    An updated version of my personal portfolio, showcasing new projects and improved design.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Html5</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Github</span>
-                    <span class="tech-tag">Vercel</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card 9: Real-time Chat Application -->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project9.png" alt="Chat Application"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">Real-time Chat Application</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    A simple chat application supporting real-time messaging and user authentication.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">React.js</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                    <span class="tech-tag">Socket.IO</span>
-                    <span class="tech-tag">Node.JS</span>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">React</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project Card 10: DermPro System -->
-            <div class="project-item">
-                <div class="mb-6 overflow-hidden rounded-xl">
-                    <img src="project10.png" alt="Online Quiz Platform"
-                        class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
-                </div>
-                <h3 class="text-3xl font-semibold text-white mb-3">DermPro System</h3>
-                <p class="text-gray-400 mb-6 text-lg">
-                    A web-based platform for creating and taking quizzes, with instant feedback and score tracking.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">jQuery</span>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="project-button code">
-                        <!-- Code Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                        Code
-                    </a>
-                    <a href="#" class="project-button demo">
-                        <!-- Play Icon (simple SVG) -->
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-
         </div>
-    </main>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project2.jpg" alt="Student Portal with E-Wallet Dashboard"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Student Portal with E-Wallet</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                An all-in-one student platform, this project was built with Laravel. It offers e-wallet integration for secure transactions and real-time account management.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">Blade Template</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">jQuery</span>
+                <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project3.png" alt="Sparkle Auto Wash (Carwash Scheduling)"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Sparkle Auto Wash</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This is a modern carwash scheduling system built with React. It features online booking, service selection, and secure payment processing thanks to the Stripe API.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Stripe API</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project4.png" alt="Social Media Dashboard"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Social Media Analytics Dashboard</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This insightful analytics dashboard was developed with Python and Node.js. It's designed to track social media engagement and audience trends from various platforms.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Scala</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project5.png" alt="Tappy Scanner QR"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Tappy Scanner QR</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This is a mobile-first web application for seamless QR and NFC scanning. It was built using HTML, Tailwind CSS, and JavaScript, and reflects data instantly.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">Vercel</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project6.png" alt="Static Profile Website"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Static Profile Website</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This simple and elegant static profile website was developed using HTML5, Tailwind CSS, and JavaScript. It features a clean and responsive design.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">JavaScript</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project7.png" alt="Hardware Inventory Management System"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Hardware Inventory Management System</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This is an Angular application that uses TypeScript and Material UI for managing hardware inventory. It offers robust tracking and reporting features.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Material UI</span>
+                <span class="tech-tag">RxJS</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project8.png" alt="Simple Maze Game"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Simple Maze Game</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This is an interactive maze game built with HTML5, Tailwind CSS, and JavaScript. It provides a fun and challenging user experience.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">Vercel</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project9.png" alt="Chat Application"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">Real-time Chat Application</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                This dynamic chat application was built with React.js and Socket.IO for real-time messaging. It features user authentication and a responsive interface.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Socket.IO</span>
+                <span class="tech-tag">Node.JS</span>
+                <span class="tech-tag">Django</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="mb-6 overflow-hidden rounded-xl">
+                <img src="project10.png" alt="DermPro System"
+                    class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+            </div>
+            <h3 class="text-3xl font-semibold text-white mb-3">DermPro System</h3>
+            <p class="text-gray-400 mb-6 text-lg">
+                The DermPro System is a Python/Django powered system designed for dermatology clinics. It efficiently manages patient records, appointments, and treatment plans.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">jQuery</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="project-button code">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    Code
+                </a>
+                <a href="#" class="project-button demo">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Live Demo
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
 
     <!-- Footer (from your index.html) -->
     <footer class="footer">
         <div class="footer-left">
-            <h4>Jhales Santiago</h4>
+            <h4><span class="underline-footer-name">Jhales</span> Santiago</h4>
             <p>Website Developer</p>
         </div>
         <div class="footer-social-icons">
@@ -1520,11 +1507,11 @@
             } else if (prompt.toLowerCase().includes("show me your projects")) {
                 botResponse = "I have several existing projects. You can navigate to the 'Projects' section of my portfolio to see them in detail. Some highlights include Tappy like you can scan it to your phone the tag and it will redirect to ur Website.";
             } else if (prompt.toLowerCase().includes("what are your skills?")) {
-                botResponse = "I possess a strong skill set in full-stack web development, including expertise in [mention 2-3 key skills, e.g., HTML, CSS, JavaScript, React, Node.js, databases, etc.]. I'm passionate about building responsive and dynamic web applications.";
+                botResponse = "I’m skilled in PHP, HTML, CSS, JavaScript, Laravel, Python, and React, along with other web-based programming languages. I'm always eager to learn new technologies, improve my craft, and explore innovative ways to build efficient and user-friendly web applications.";
             } else if (prompt.toLowerCase().includes("work experience")) {
-                botResponse = "You can find details about my work experience in the 'About' section of my portfolio, specifically under the 'Work Experience' subsection. I have experience in [mention a brief summary of experience, e.g., developing web applications, collaborating with teams, etc.].";
+                botResponse = "You can find details about my work experience in the 'About' and 'Projects' section of my portfolio, I have experience in a team collaboration like Josiah and Arwin, also working and debug my school projects working and integrating some inventory, agency and etc.";
             } else if (prompt.toLowerCase().includes("contact information")) {
-                botResponse = "You can reach out to me via the 'Contact' page on my portfolio. You'll find a form there to send me a message directly. I'm also available on [mention social media you listed in footer, e.g., LinkedIn, GitHub, Facebook].";
+                botResponse = "Mail: jhalesarizosantiago@gmail.com";
             } else {
                 // If not a predefined query, call the Gemini API
                 let chatHistory = [];

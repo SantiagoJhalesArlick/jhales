@@ -139,13 +139,13 @@
             letter-spacing: -1px;
         }
 
+        /* UPDATED: Tagline font size */
         .tagline {
             color: #d0d0d0;
-            font-size: 2.2em;
+            font-size: 2.2em; /* Increased from 1.8em */
             margin-bottom: 40px;
             font-weight: 300;
         }
-
 
         .typewriter-text {
             color: #00bfff;
@@ -168,12 +168,10 @@
         }
 
         @keyframes blink-caret {
-
             from,
             to {
                 background-color: transparent;
             }
-
             50% {
                 background-color: #00bfff;
             }
@@ -205,7 +203,7 @@
             transform: scale(1.1);
         }
 
-        /* Hero buttons will always be visible by default, and animated if you re-add animation */
+        /* Hero buttons will always be visible by default now */
         .hero-buttons {
             display: flex;
             flex-direction: column;
@@ -434,11 +432,9 @@
             margin-left: 20px;
         }
 
+        /* MEDIA QUERIES FOR MOBILE */
         @media (max-width: 768px) {
             .header {
-                .tagline {
-        font-size: 1.8em; /* Increased from 1.6em for mobile */
-    }
                 flex-direction: row;
                 justify-content: space-between;
                 padding: 15px 20px;
@@ -492,8 +488,9 @@
                 font-size: 3.2em; /* Adjusted for mobile */
             }
 
+            /* UPDATED: Tagline font size for mobile */
             .tagline {
-                font-size: 1.6em; /* Adjusted for mobile */
+                font-size: 1.8em; /* Increased from 1.6em for mobile */
             }
 
             .hero-content p {
@@ -546,6 +543,7 @@
                 grid-template-columns: 1fr;
             }
 
+            /* Footer adjustments for mobile */
             .footer {
                 flex-direction: column;
                 padding: 30px 15px;
@@ -561,7 +559,7 @@
             .footer-right {
                 text-align: center;
                 min-width: unset;
-                margin: 0; /* Adjust or remove if needed */
+                margin: 0;
             }
 
             .footer-social-icons {
@@ -572,14 +570,12 @@
 
         @media (max-width: 480px) {
             h1 {
-                .tagline {
-        font-size: 1.5em; /* Increased from 1.3em for smaller phones */
-    }
                 font-size: 2.6em; /* Further adjustment for smaller phones */
             }
 
+            /* UPDATED: Tagline font size for smaller phones */
             .tagline {
-                font-size: 1.3em; /* Further adjustment for smaller phones */
+                font-size: 1.5em; /* Increased from 1.3em for smaller phones */
             }
 
             .hero-content p {
@@ -633,19 +629,20 @@
         <div class="hero-content">
             <h1>Jhales Santiago</h1>
             <p class="tagline">I'm a <span id="typewriter-output" class="typewriter-text"></span></p>
-                        <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto md:mx-0">
-Passionate about creating both static and dynamic web applications using modern technologies. Mabuhay!
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto md:mx-0">
+                Passionate about creating both static and dynamic web applications using modern technologies. Mabuhay!
             </p>
 
             <div class="social-icons">
                 <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i
-                                class="fab fa-linkedin"></i></a>
+                        class="fab fa-linkedin"></i></a>
                 <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
 
-            <div class="hero-buttons"> <a href="https://jhales.vercel.app/" class="btn" download><i class="fas fa-download"></i> Download
+            <div class="hero-buttons">
+                <a href="https://jhales.vercel.app/" class="btn" download><i class="fas fa-download"></i> Download
                     CV</a>
                 <a href="contact.html" class="btn secondary"><i class="fas fa-envelope"></i> Contact Me</a>
             </div>
@@ -660,7 +657,7 @@ Passionate about creating both static and dynamic web applications using modern 
         <div class="footer-social-icons">
             <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i
-                            class="fab fa-linkedin"></i></a>
+                    class="fab fa-linkedin"></i></a>
             <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
@@ -687,6 +684,7 @@ Passionate about creating both static and dynamic web applications using modern 
             });
         });
 
+        // This ensures the sections below the hero fade in as you scroll
         const sections = document.querySelectorAll('section');
 
         const observerOptions = {
@@ -709,8 +707,8 @@ Passionate about creating both static and dynamic web applications using modern 
             sectionObserver.observe(section);
         });
 
-        // Simplified hero button visibility: they are always visible now by default in CSS.
-        // The previous JavaScript logic for `revealHeroButtons` is no longer needed.
+        // Removed the heroButtons variable and the revealHeroButtons function
+        // because the buttons are now always visible by default through HTML/CSS changes.
 
 
         document.addEventListener('DOMContentLoaded', () => {

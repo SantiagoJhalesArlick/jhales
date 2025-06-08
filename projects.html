@@ -3,10 +3,976 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <link rel="icon" type="image/jpeg" href="jhales.png" />
+    <title>Jhales Santiago | Full-Stack Web Developer</title>
+    <!-- Font Awesome for icons, as used in your header/footer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tailwind CSS CDN for utility-first styling for project cards -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look (combined from both sources) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* Combined body styles - prioritizing the #1a1a1a background from index.html */
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    margin: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header styles from your provided index.html */
+.header {
+    background-color: #1a1a1a;
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #333333;
+}
+
+.header-logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #00bfff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo i {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #00bfff;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a {
+    color: #f0f0f0;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    padding-bottom: 5px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-nav a i {
+    margin-right: 8px;
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #00bfff;
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active-link::after { /* Active link style for new header */
+    width: 100%;
+}
+
+.main-nav a:hover,
+.main-nav a.active-link { /* Active link style for new header */
+    color: #00bfff;
+    transform: translateY(-2px);
+}
+
+.main-nav a:hover i,
+.main-nav a.active-link i { /* Active link style for new header */
+    color: #00bfff;
+}
+
+.hamburger-menu {
+    display: none;
+    font-size: 1.8em;
+    color: #00bfff;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Hero section styles (kept for reference, though not directly used on this page) */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 100px 20px 50px;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 20px;
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #00bfff;
+    font-size: 4em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.tagline {
+    color: #d0d0d0;
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.typewriter-text {
+    color: #00bfff;
+    min-height: 1.5em;
+    display: inline-block;
+    position: relative;
+}
+
+.typewriter-text::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: #00bfff;
+    animation: blink-caret 0.75s step-end infinite;
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+}
+
+@keyframes blink-caret {
+    from, to {
+        background-color: transparent;
+    }
+    50% {
+        background-color: #00bfff;
+    }
+}
+
+.hero-content p {
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-icons {
+    margin-bottom: 30px;
+}
+
+.social-icons a {
+    color: #f0f0f0;
+    font-size: 2.2em;
+    margin: 0 18px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #00bfff;
+    transform: scale(1.1);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-buttons.mobile-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00bfff;
+    color: #fff;
+    padding: 16px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+    width: 80%;
+    max-width: 300px;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn:hover {
+    background-color: #008fcc;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+}
+
+.btn.secondary {
+    background-color: #333333;
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background-color: #444444;
+    box-shadow: none;
+}
+
+/* Section styles (kept for reference, though not directly used on this page for main content) */
+section {
+    padding: 100px 20px;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #222222;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: #00bfff;
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+h3 {
+    color: #f0f0f0;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#about p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: 1.1em;
+}
+
+#skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+#skills li {
+    background-color: #3a3a3a;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#skills li:hover {
+    background-color: #00bfff;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+}
+
+/* Project grid styles */
+.projects-grid {
+    display: grid;
+    /* Default to 2 columns on larger screens */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px; /* Consistent gap between items */
+    margin-top: 50px;
+}
+
+/* --- START: Changes for Project Box Spacing --- */
+.container {
+    max-width: 1200px; /* Adjusted max-width for less empty side space */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 100px; /* Custom padding for desktop */
+    padding-right: 30px; /* Custom padding for desktop */
+}
+/* --- END: Changes for Project Box Spacing --- */
+
+.project-item {
+    background-color: #2b2b2b; /* Adjusted from gray-800 for consistency */
+    padding: 30px; /* Adjusted from p-6 */
+    border-radius: 10px; /* Adjusted from rounded-2xl */
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Custom shadow for consistency */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for consistency */
+}
+
+.project-item:hover {
+    transform: translateY(-5px); /* Adjusted from -translate-y-1 */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Custom shadow for consistency */
+}
+
+.project-item h3 {
+    color: #00bfff; /* Adjusted from white */
+    margin-top: 0;
+    font-size: 1.5em; /* Adjusted from text-3xl */
+}
+
+.project-item p {
+    font-size: 0.95em; /* Adjusted from text-lg */
+    margin-bottom: 20px; /* Adjusted from mb-6 */
+}
+
+.project-item .tech-tag { /* New class for technology tags */
+    background-color: #3f7a8e; /* A darker purple, closer to violet-600 */
+    color: #fff;
+    font-size: 0.875em; /* text-sm */
+    font-weight: 500;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    display: inline-block; /* Ensure it respects padding */
+}
+
+.project-item .project-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px; /* px-6 py-3 */
+    border-radius: 9999px; /* rounded-full */
+    font-size: 1.125em; /* text-lg */
+    font-weight: 500;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.project-item .project-button.code {
+    background-color: #333333; /* bg-gray-700 */
+    color: #fff;
+    border: 1px solid #4a4a4a; /* border-gray-600 */
+}
+
+.project-item .project-button.code:hover {
+    background-color: #444444; /* hover:bg-gray-600 */
+    border-color: #555555; /* hover:border-gray-500 */
+}
+
+.project-item .project-button.demo {
+    background-color: #3f7a8e; /* bg-violet-700 */
+    color: #fff;
+    border: 1px solid #3f7a8e; /* border-violet-600 */
+}
+
+.project-item .project-button.demo:hover {
+    background-color: #3f7a8e; /* hover:bg-violet-600 */
+    border-color: #00bfff; /* hover:border-violet-500 */
+}
+
+/* Footer styles from your provided index.html */
+.footer {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    padding: 30px 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: none;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    text-align: left;
+    flex-grow: 1;
+    min-width: 200px;
+    margin-right: 20px;
+}
+
+.footer-left h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.8em;
+    color: #00bfff;
+    font-weight: 700;
+}
+
+.footer-left p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #d0d0d0;
+    opacity: 0.9;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+    justify-content: center;
+    min-width: 150px;
+    margin: 0 20px;
+}
+
+.footer-social-icons a {
+    color: #f0f0f0;
+    font-size: 1.5em;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #2b2b2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-social-icons a:hover {
+    background-color: #00bfff;
+    color: #1a1a1a;
+    transform: translateY(-3px);
+}
+
+.footer-right {
+    font-size: 0.9em;
+    color: #aaaaaa;
+    text-align: right;
+    flex-grow: 1;
+    min-width: 200px;
+    margin-left: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 20px;
+        position: fixed;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: #222222;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        padding: 20px 0;
+        border-radius: 0 0 10px 10px;
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%);
+        box-sizing: border-box;
+    }
+
+    .main-nav.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .main-nav a {
+        margin: 10px 20px;
+        font-size: 1.2em;
+        width: fit-content;
+        align-self: flex-start;
+    }
+
+    .main-nav a::after {
+        left: 20px;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    section {
+        padding: 60px 15px;
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        font-size: 2.4em;
+    }
+
+    h3 {
+        font-size: 1.6em;
+    }
+
+    #about p {
+        font-size: 1.1em;
+    }
+
+    #skills ul {
+        padding: 10px 20px;
+        font-size: 1.05em;
+    }
+
+    /* For mobile/tablet, ensure 1 column */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- START: Changes for Project Box Spacing (Mobile) --- */
+    .container {
+        padding-left: 15px; /* Keep some padding on mobile */
+        padding-right: 15px; /* Keep some padding on mobile */
+    }
+    /* --- END: Changes for Project Box Spacing (Mobile) --- */
+
+    .footer {
+        flex-direction: column;
+        padding: 30px 15px;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right,
+    .footer-social-icons {
+        text-align: center;
+        min-width: unset;
+        margin: 0 0 15px 0;
+    }
+
+    .footer-social-icons {
+        order: -1;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    #about p {
+        font-size: 1em;
+    }
+
+    #skills li {
+        padding: 8px 15px;
+        font-size: 0.95em;
+    }
+}
+    </style>
 </head>
 <body>
-    <h1>TO BE CONTINUE!!</h1>
-    <p>pahinga lang si aq</p>
+
+    <!-- Header (from your index.html) -->
+    <header class="header">
+        <a href="index.html" class="header-logo">
+            <i class="fas fa-cube"></i> MyPortfolio
+        </a>
+        <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
+        <nav class="main-nav" id="main-nav-links">
+            <a href="about.html"><i class="fas fa-user"></i> About</a>
+            <a href="projects.html" class="active-link"><i class="fas fa-folder-open"></i> Projects</a> <!-- Marked Projects as active -->
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Area - Projects Section (from portfolio-project-section) -->
+    <main class="container mx-auto px-4 py-12 md:py-20" style="padding-top: 100px;"> <!-- Added padding-top to account for fixed header -->
+        <!-- Section Header -->
+        <div class="text-center md:text-left mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">10 Projects</h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto md:mx-0">
+                Here are some of the projects I've worked on. Each represents different skills and technologies I've learned.
+            </p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+            <!-- Project Card 1: RFID Attendance Monitoring System -->
+            <div class="project-item">
+                <!-- Project Image (Placeholder) -->
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project1.png" alt="System1" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Personal Stylist Scheduling System</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    A comprehensive PSSS-based system designed to monitor student/office attendance efficiently,
+                    featuring real-time tracking, secure account management.
+                </p>
+                <!-- Technology Tags -->
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Php</span>
+                    <span class="tech-tag">Html5</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <!-- Code Icon (simple SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <!-- Play Icon (simple SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 2: Student Portal with E-Wallet -->
+            <div class="project-item">
+                <!-- Project Image (Placeholder) -->
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project2.jpg" alt="Student Portal with E-Wallet Dashboard" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Student Portal with E-Wallet</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    An all-in-one platform for students to manage their accounts, make secure e-wallet transactions,
+                    and track transactions availability in real-time.
+                </p>
+                <!-- Technology Tags -->
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Laravel</span>
+                    <span class="tech-tag">Blade Template</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">jQuery</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <!-- Code Icon (simple SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <!-- Play Icon (simple SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 3: E-commerce Website -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project3.png" alt="E-commerce Website" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Sparkle Auto Wash</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    A fully responsive e-commerce site with product listings, shopping cart, and secure checkout, built for scalability.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Stripe API</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 4: Social Media Dashboard -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project4.png" alt="Social Media Dashboard" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Social Media Analytics Dashboard</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    An intuitive dashboard for tracking social media engagement, audience growth, and content performance.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Scala</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 5: Recipe Finder App -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project5.png" alt="Recipe Finder App" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Tappy Scanner QR</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    A web application allowing users to search for recipes, view ingredients, and step-by-step instructions.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Html</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Github</span>
+                    <span class="tech-tag">Vercel</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 6: Weather Dashboard -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project6.png" alt="Weather Dashboard" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Static Website</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    Displays current weather conditions and forecasts based on user location or city search.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Html5</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 7: Task Management App -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project7.png" alt="Task Management App" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Hardware Inventory Management System</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    A web-based task manager with drag-and-drop functionality, due dates, and priority settings.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Angular</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Material UI</span>
+                    <span class="tech-tag">RxJS</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 8: Portfolio Website V2 -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project8.png" alt="Portfolio Website V2" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Simple Maze Game</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    An updated version of my personal portfolio, showcasing new projects and improved design.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Html5</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Github</span>
+                    <span class="tech-tag">Vercel</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 9: Chat Application -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project9.png" alt="Chat Application" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">Real-time Chat Application</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    A simple chat application supporting real-time messaging and user authentication.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Socket.IO</span>
+                    <span class="tech-tag">Node.JS</span>
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">React</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project Card 10: Online Quiz Platform -->
+            <div class="project-item">
+                <div class="mb-6 overflow-hidden rounded-xl">
+                    <img src="project10.png" alt="Online Quiz Platform" class="w-full h-auto object-cover rounded-xl transition-transform duration-300 hover:scale-105">
+                </div>
+                <h3 class="text-3xl font-semibold text-white mb-3">DermPro System</h3>
+                <p class="text-gray-400 mb-6 text-lg">
+                    A web-based platform for creating and taking quizzes, with instant feedback and score tracking.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">jQuery</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="project-button code">
+                        <!-- Code Icon (simple SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Code
+                    </a>
+                    <a href="#" class="project-button demo">
+                        <!-- Play Icon (simple SVG) -->
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Live Demo
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer (from your index.html) -->
+    <footer class="footer">
+        <div class="footer-left">
+            <h4>Jhales Santiago</h4>
+            <p>Website Developer</p>
+        </div>
+        <div class="footer-social-icons">
+            <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-right">
+            &copy; <span id="current-year"></span> Jhales Santiago. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Mobile menu toggle logic
+            const hamburgerMenu = document.getElementById('hamburger-menu-icon');
+            const mainNavLinks = document.getElementById('main-nav-links');
+
+            if (hamburgerMenu && mainNavLinks) {
+                hamburgerMenu.addEventListener('click', () => {
+                    mainNavLinks.classList.toggle('active');
+                });
+
+                // Close mobile menu when a link is clicked
+                mainNavLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNavLinks.classList.contains('active')) {
+                            mainNavLinks.classList.remove('active');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

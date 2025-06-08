@@ -4,40 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
-    <title>About - MyPortfolio</title>
-
+    <link rel="icon" type="image/jpeg" href="jhales.png" />
+    <title>Jhales Santiago | Full-Stack Web Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
-        /* ------------------------- */
-        /* GLOBAL & ROOT STYLES      */
-        /* ------------------------- */
-        :root {
-            --primary-color: #00bfff;
-            --background-color: #1a1a1a;
-            --surface-color: #333333;
-            --text-color: #f0f0f0;
-            --text-muted-color: #d0d0d0;
-            --border-color: #444444;
-        }
-
+        /* Base styles */
         body {
             font-family: 'Inter', Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background-color: #1a1a1a;
+            color: #f0f0f0;
             margin: 0;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ------------------------- */
-        /* HEADER & NAVIGATION       */
-        /* ------------------------- */
+        /* Header and Navigation (Copied from index.html) */
         .header {
-            background-color: var(--background-color);
+            background-color: #1a1a1a;
             padding: 20px 40px;
             position: fixed;
             width: 100%;
@@ -48,13 +33,13 @@
             justify-content: space-between;
             align-items: center;
             box-sizing: border-box;
-            border-bottom: 1px solid var(--surface-color);
+            border-bottom: 1px solid #333333;
         }
 
         .header-logo {
             font-size: 1.8em;
             font-weight: 700;
-            color: var(--primary-color);
+            color: #00bfff;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -63,15 +48,17 @@
         .header-logo i {
             font-size: 1.2em;
             margin-right: 10px;
+            color: #00bfff;
         }
 
         .main-nav {
             display: flex;
+            /* Default to flex for desktop */
             align-items: center;
         }
 
         .main-nav a {
-            color: var(--text-color);
+            color: #f0f0f0;
             text-decoration: none;
             margin-left: 30px;
             font-size: 1.1em;
@@ -85,17 +72,8 @@
 
         .main-nav a i {
             margin-right: 8px;
+            color: #f0f0f0;
             transition: color 0.3s ease;
-        }
-
-        .main-nav a.active-nav-link,
-        .main-nav a:hover {
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .main-nav a:hover i {
-            color: var(--primary-color);
         }
 
         .main-nav a::after {
@@ -105,294 +83,288 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: var(--primary-color);
+            background-color: #00bfff;
             transition: width 0.3s ease;
         }
 
-        .main-nav a:hover::after,
-        .main-nav a.active-nav-link::after {
+        .main-nav a:hover::after {
             width: 100%;
         }
 
+        .main-nav a:hover {
+            color: #00bfff;
+            transform: translateY(-2px);
+        }
+
+        .main-nav a:hover i {
+            color: #00bfff;
+        }
+
+        /* Hamburger Menu Icon - Added for mobile responsiveness */
         .hamburger-menu {
             display: none;
+            /* Hidden by default on desktop */
             font-size: 1.8em;
-            color: var(--primary-color);
+            color: #00bfff;
             cursor: pointer;
             z-index: 1001;
+            /* Ensure it's above other content */
         }
 
-        /* ------------------------- */
-        /* MAIN CONTENT & LAYOUT     */
-        /* ------------------------- */
-        .about-page-section {
-            padding: 120px 40px 50px;
-            max-width: 1100px;
-            margin: 0 auto;
+        /* About Page Layout */
+        .about-page-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Two columns for desktop */
+            gap: 20px;
+            /* Space between columns */
+            max-width: 1200px;
+            /* Max width for the whole layout */
+            margin: 100px auto 50px auto;
+            /* Adjusted top margin for fixed header */
+            padding: 0 20px;
+            /* Padding for the sides */
             box-sizing: border-box;
         }
 
-        .about-page-section>h2 {
-            font-size: 3em;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-
-        .main-content-wrapper {
-            display: flex;
-            gap: 30px;
-            position: relative;
-        }
-
-        .main-content-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 1px;
-            background-color: var(--surface-color);
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .about-left-column,
-        .about-right-column {
+        /* About Section Styling */
+        .about-page-section {
+            padding: 40px 30px;
+            /* Adjusted padding */
+            background-color: #000000;
+            /* Changed background color to black */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            flex: 1;
-            min-width: 0;
-            /* Prevents flexbox overflow */
-        }
-
-        /* ------------------------- */
-        /* CARD COMPONENTS           */
-        /* ------------------------- */
-        .who-i-am-card,
-        .education-section,
-        .freelance-stats-section,
-        .wakatime-section,
-        .github-section,
-        .interests-box {
-            background-color: var(--background-color);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .who-i-am-card {
             align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            min-height: calc(100vh - 200px);
+            /* Adjusted for header + footer */
+            justify-content: flex-start;
         }
 
-        .who-i-am-card h3,
-        .education-section h3,
-        .freelance-stats-section h3,
-        .wakatime-section h3,
-        .github-section h3 {
-            color: var(--primary-color);
-            font-size: 1.6em;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 4px solid var(--primary-color);
-            box-shadow: 0 0 0 5px rgba(0, 191, 255, 0.2);
-        }
-
-        .profile-pic img {
+        .about-content {
             width: 100%;
-            height: 100%;
+            text-align: left;
+            /* Removed padding here as it's handled by .about-page-section */
+        }
+
+        .about-content h2 {
+            text-align: center;
+            color: #00bfff;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .about-content img.profile-picture {
+            display: block;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            margin: 0 auto 25px auto;
+            border: 4px solid #00bfff;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
         }
 
-        .stat-card {
-            background-color: var(--surface-color);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+        .about-content p {
+            font-size: 1.05em;
+            margin-bottom: 20px;
+            color: #d0d0d0;
+            line-height: 1.8;
+        }
+
+        .about-content p strong {
+            color: #f0f0f0;
+        }
+
+        /* Skills & Interests section */
+        .skills-interests,
+        .personal-interests {
+            /* Combined styles for both sections */
+            margin-top: 30px;
+            text-align: center;
             width: 100%;
-            box-sizing: border-box;
+            background-color: #000000;
+            /* Ensure this is also black */
+            border-radius: 10px;
+            /* Match main container's border-radius */
+            padding: 20px 0;
+            /* Add some padding inside the section for content */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            /* Add a subtle shadow */
         }
 
-        .stat-card p {
-            font-size: 0.95em;
-            color: var(--text-muted-color);
-            margin: 0 0 10px 0;
+        .skills-interests h3,
+        .personal-interests h3 {
+            font-size: 1.8em;
+            color: #00bfff;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
-        .stat-card p:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat-card h4 {
-            color: var(--primary-color);
-            font-size: 1.5em;
-            margin: 0 0 10px 0;
-        }
-
-        .stat-card img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-
-        .stat-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-        }
-
-        .stat-card ul li {
-            margin-bottom: 5px;
-            font-size: 0.9em;
-        }
-
-        .stat-card ul li span {
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        .education-item p {
-            margin: 5px 0;
-            font-size: 1em;
-            color: var(--text-muted-color);
-        }
-
-        .education-item p:first-child {
-            color: var(--text-color);
-            font-weight: bold;
-        }
-
-        /* ------------------------- */
-        /* STATS & INTERESTS GRIDS   */
-        /* ------------------------- */
-        .freelance-stats-grid-inner,
-        .personal-interests-grid {
+        .skills-grid,
+        .interests-grid {
+            /* Combined styles for both grids */
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+            padding: 0 20px;
+            /* Added horizontal padding to the grid itself */
         }
 
-        .freelance-stats-grid-inner {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .personal-interests-grid {
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        }
-
-        .stat-item,
+        .skill-item,
         .interest-item {
-            background-color: var(--surface-color);
+            /* Combined styles for items */
+            background-color: #1a1a1a;
+            /* Darker than background for contrast, but still dark */
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
         }
 
-        .stat-item i {
-            font-size: 2em;
-            color: var(--primary-color);
+        .skill-item:hover,
+        .interest-item:hover {
+            transform: translateY(-5px);
+            background-color: #3a3a3a;
+        }
+
+        .skill-item i,
+        .interest-item i {
+            font-size: 2.5em;
+            color: #00bfff;
             margin-bottom: 10px;
         }
 
-        .stat-item h4 {
-            color: var(--text-color);
-            font-size: 2.2em;
-            margin: 0;
+        .skill-item span,
+        .interest-item span {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+
+        /* Right Column sections (WakaTime and GitHub) */
+        .right-column-section {
+            padding: 40px 30px;
+            /* Adjusted padding */
+            background-color: #000000;
+            /* Changed background color to black */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            /* Center content within these sections */
+        }
+
+        .right-column-section h2 {
+            color: #00bfff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
-        .stat-item p {
-            font-size: 0.9em;
-            color: var(--text-muted-color);
-            margin: 5px 0 0 0;
+        .right-column-section p {
+            font-size: 1em;
+            color: #d0d0d0;
+            margin-bottom: 15px;
         }
 
-        .interest-item {
-            transition: background-color 0.3s ease, transform 0.2s ease;
+        /* Placeholder for GitHub Stats Image */
+        .github-stats-placeholder {
+            width: 100%;
+            height: 200px;
+            /* Adjust height as needed */
+            background-color: #2b2b2b;
+            /* Darker gray for the placeholder box */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00bfff;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            /* Added margin for spacing below it */
         }
 
-        .interest-item:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
+        /* Placeholder for Most Used Languages */
+        .most-used-languages-placeholder {
+            width: 100%;
+            height: 150px;
+            /* Adjust height as needed */
+            background-color: #2b2b2b;
+            /* Darker gray for the placeholder box */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00bfff;
+            font-size: 1.2em;
+            font-weight: 600;
         }
 
-        .interest-item i {
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .interest-item p {
-            font-size: 0.9em;
-            color: var(--text-color);
-            margin: 0;
-            transition: color 0.3s ease;
-        }
-
-        .interest-item:hover i,
-        .interest-item:hover p {
-            color: var(--background-color);
-        }
-
-        /* ------------------------- */
-        /* FOOTER                    */
-        /* ------------------------- */
+        /* Footer (Copied from index.html) */
         .footer {
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background-color: #1a1a1a;
+            color: #f0f0f0;
             padding: 30px 40px;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+            border-top: none;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
             flex-wrap: wrap;
-            border-top: 1px solid var(--surface-color);
+        }
+
+        .footer-left {
+            text-align: left;
+            flex-grow: 1;
+            min-width: 200px;
+            margin-right: 20px;
         }
 
         .footer-left h4 {
             margin: 0 0 5px 0;
             font-size: 1.8em;
-            color: var(--primary-color);
+            color: #00bfff;
             font-weight: 700;
         }
 
         .footer-left p {
             margin: 0;
             font-size: 1.1em;
-            color: var(--text-muted-color);
+            color: #d0d0d0;
+            opacity: 0.9;
         }
 
         .footer-social-icons {
             display: flex;
             gap: 15px;
+            flex-grow: 1;
             justify-content: center;
+            min-width: 150px;
+            margin: 0 20px;
         }
 
         .footer-social-icons a {
-            color: var(--text-color);
+            color: #f0f0f0;
             font-size: 1.5em;
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background-color: #2a2a2a;
+            background-color: #2b2b2b;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -400,56 +372,29 @@
         }
 
         .footer-social-icons a:hover {
-            background-color: var(--primary-color);
-            color: var(--background-color);
+            background-color: #00bfff;
+            color: #1a1a1a;
             transform: translateY(-3px);
         }
 
         .footer-right {
             font-size: 0.9em;
             color: #aaaaaa;
-        }
-
-        .footer-left,
-        .footer-right {
-            flex-grow: 1;
-        }
-
-        .footer-left {
-            text-align: left;
-        }
-
-        .footer-right {
             text-align: right;
+            flex-grow: 1;
+            min-width: 200px;
+            margin-left: 20px;
         }
 
-        /* ------------------------- */
-        /* RESPONSIVE MEDIA QUERIES  */
-        /* ------------------------- */
-
-        /* Tablet View */
-        @media (max-width: 1024px) {
-            .main-content-wrapper {
-                flex-direction: column;
-            }
-
-            .main-content-wrapper::after {
-                display: none;
-            }
-
-            .about-page-section {
-                padding: 100px 30px 30px;
-            }
-        }
-
-        /* Mobile View */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
+                flex-direction: row;
+                justify-content: space-between;
                 padding: 15px 20px;
-            }
-
-            .hamburger-menu {
-                display: block;
+                position: fixed;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .main-nav {
@@ -457,87 +402,141 @@
                 flex-direction: column;
                 position: absolute;
                 top: 65px;
-                /* Adjusted for header height */
                 left: 0;
                 width: 100%;
-                background-color: #222;
+                background-color: #222222;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
                 padding: 20px 0;
                 border-radius: 0 0 10px 10px;
+                transition: transform 0.3s ease-out;
+                transform: translateY(-100%);
+                box-sizing: border-box;
             }
 
             .main-nav.active {
                 display: flex;
+                transform: translateY(0);
             }
 
             .main-nav a {
                 margin: 10px 20px;
                 font-size: 1.2em;
+                width: fit-content;
+                align-self: flex-start;
             }
 
-            .about-page-section {
-                padding: 80px 20px 30px;
+            .main-nav a::after {
+                left: 20px;
             }
 
-            .about-page-section>h2 {
-                font-size: 2.2em;
-                text-align: center;
+            .hamburger-menu {
+                display: block;
             }
 
-            .who-i-am-card h3,
-            .education-section h3,
-            .freelance-stats-section h3,
-            .wakatime-section h3,
-            .github-section h3,
-            .personal-interests-section h3 {
-                text-align: center;
-            }
-
-            .personal-interests-section h3 {
-                border-bottom: none;
-            }
-
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-            }
-
-            .freelance-stats-grid-inner {
+            .about-page-layout {
                 grid-template-columns: 1fr;
+                /* Stack columns on mobile */
+                margin-top: 80px;
+                /* Adjusted for fixed header */
+                padding: 0 15px;
+                /* Adjust padding for mobile */
+            }
+
+            .about-page-section,
+            .right-column-section {
+                padding: 40px 15px 20px;
+                /* Adjusted padding for mobile */
+                margin-bottom: 25px;
+                /* Space between stacked sections */
+                min-height: auto;
+            }
+
+            .about-content {
+                padding: 0;
+                /* No horizontal padding within content div on mobile */
+            }
+
+            .about-content h2,
+            .right-column-section h2 {
+                font-size: 2em;
+            }
+
+            .about-content p {
+                font-size: 0.95em;
+            }
+
+            .skills-interests h3,
+            .personal-interests h3 {
+                font-size: 1.5em;
+            }
+
+            .skills-grid,
+            .interests-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+                padding: 0 10px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .skill-item i,
+            .interest-item i {
+                font-size: 2em;
+            }
+
+            .skill-item span,
+            .interest-item span {
+                font-size: 0.85em;
             }
 
             .footer {
                 flex-direction: column;
-                gap: 25px;
+                padding: 25px 15px;
+                text-align: center;
             }
 
             .footer-left,
-            .footer-right {
+            .footer-right,
+            .footer-social-icons {
                 text-align: center;
+                min-width: unset;
+                margin: 0 0 10px 0;
+            }
+
+            .footer-social-icons {
+                order: -1;
+                margin-bottom: 15px;
             }
         }
 
-        /* Small Mobile View */
         @media (max-width: 480px) {
-            .about-page-section>h2 {
-                font-size: 1.8em;
+            .header-logo {
+                font-size: 1.5em;
             }
 
-            .who-i-am-card h3,
-            .education-section h3,
-            .freelance-stats-section h3,
-            .wakatime-section h3,
-            .github-section h3 {
-                font-size: 1.4em;
+            .main-nav a {
+                font-size: 1.1em;
             }
 
-            .profile-pic {
-                width: 120px;
-                height: 120px;
+            .about-content h2,
+            .right-column-section h2 {
+                font-size: 1.6em;
             }
 
-            .personal-interests-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .skills-interests h3,
+            .personal-interests h3 {
+                font-size: 1.3em;
+            }
+
+            .skills-grid,
+            .interests-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                padding: 0 5px;
+                /* Further adjust padding for very small screens */
+            }
+
+            .skill-item,
+            .interest-item {
+                padding: 10px;
             }
         }
     </style>
@@ -552,124 +551,96 @@
         <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
         <nav class="main-nav" id="main-nav-links">
             <a href="about.html" class="active-nav-link"><i class="fas fa-user"></i> About</a>
-            <a href="skills.html"><i class="fas fa-code"></i> Skills</a>
             <a href="projects.html"><i class="fas fa-folder-open"></i> Projects</a>
             <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
     </header>
 
-    <main>
+    <div class="about-page-layout">
         <section class="about-page-section">
-            <h2>About Me</h2>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <img src="jhales.png" alt="Jhales Santiago Profile Picture" class="profile-picture">
+                <p>Sup, this Jhales Santiago also known as "Parasite" <strong>4th year college student</strong> at
+                    <strong>Bestlink College of the Philippines
+                    </strong>, pursuing my degree in <strong>Information Technology</strong>. I also love exploring
+                    opportunities to attend seminars and events, both online and offline, to expand my knowledge and
+                    connect with the wider tech community.</p>
+                <p>I am passionate about creating clean, efficient, and user-friendly solutions. I constantly learn and
+                    improve my skills to deliver high-quality solutions.</p>
 
-            <div class="main-content-wrapper">
-                <div class="about-left-column">
-
-                    <div class="who-i-am-card">
-                        <div class="profile-pic">
-                            <img src="jhalespicture.jpg" alt="A portrait of Jhales Santiago. Based on the name and appearance, he could be of Filipino descent.">
+                <div class="skills-interests">
+                    <h3>My Skills & Interests</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
                         </div>
-                        <h3>Who I Am</h3>
-                        <div class="stat-card">
-                            <p>Hi, I'm Jhales Santiago, a passionate Website Developer from Quezon City, Metro Manila, Philippines, with a drive for creating both static and dynamic web applications.</p>
-                            <p>I am currently a 4th year college student at Bestlink College of the Philippines, pursuing a degree in Information Technology. In my free time, I love to work on personal projects to expand my portfolio and experience.</p>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
                         </div>
-                    </div>
-
-                    <div class="education-section">
-                        <h3>Education</h3>
-                        <div class="stat-card">
-                            <div class="education-item">
-                                <p>Bachelor of Science in Information Technology</p>
-                                <p>Bestlink College of the Philippines, 2025</p>
-                                <p>Currently in my 4th year of studies, focusing on Web Development.</p>
-                            </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
                         </div>
-                    </div>
-
-                    <div class="wakatime-section">
-                        <h3>WakaTime Stats</h3>
-                        <div class="stat-card">
-                            <h4>Activity</h4>
-                            <img src="wakatime.png" alt="WakaTime coding activity graph showing PHP as the most used language.">
-                            <p>Last Week, I coded for 18 hrs 56 mins using WakaTime. I've coded for a total of 22 hrs 8 mins.</p>
-                            <p style="font-size: 0.8em; opacity: 0.7;">Data from 2025</p>
+                        <div class="skill-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
                         </div>
-                        <div class="stat-card">
-                            <h4>Contributions</h4>
-                            <img src="contribution.png" alt="Contributions graph.">
-                            <p>Record of 151 contributions in 2024</p>
+                        <div class="skill-item">
+                            <i class="fab fa-laravel"></i>
+                            <span>Laravel</span>
                         </div>
-                    </div>
-
-                </div>
-
-                <div class="about-right-column">
-
-                    <div class="freelance-stats-section">
-                        <h3>Product Status</h3>
-                        <div class="freelance-stats-grid-inner">
-                            <div class="stat-item">
-                                <i class="fas fa-users"></i>
-                                <h4>500+</h4>
-                                <p>Satisfied Clients (Tappy)</p>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-folder-open"></i>
-                                <h4>31+</h4>
-                                <p>Projects</p>
-                            </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
                         </div>
-                    </div>
-
-                    <div class="github-section">
-                        <h3>GitHub Stats</h3>
-                        <div class="stat-card">
-                            <h4>mnlxqc.git</h4>
-                            <img src="stats.png" alt="GitHub Stats card.">
-                            <ul>
-                                <li>Total Stars Earned: <span>550+</span></li>
-                                <li>Total Commits: <span>200+</span></li>
-                                <li>Total PRs: <span>0</span></li>
-                                <li>Total Issues: <span>0</span></li>
-                                <li>Contributed to (last year): <span>0</span></li>
-                            </ul>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-java"></i> <span>Java</span>
                         </div>
-                        <div class="stat-card">
-                            <h4>Most Used Languages</h4>
-                            <img src="mostLanguageUses.png" alt="Most used languages graph.">
+                        <div class="skill-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Git</span>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="personal-interests-section">
-                <div class="interests-box">
-                    <h3>Personal Interests</h3>
-                    <div class="personal-interests-grid">
-                        <div class="interest-item">
-                            <i class="fas fa-book-open"></i>
-                            <p>Reading</p>
-                        </div>
-                        <div class="interest-item">
-                            <i class="fas fa-motorcycle"></i>
-                            <p>Motorcycle</p>
-                        </div>
-                        <div class="interest-item">
-                            <i class="fas fa-gamepad"></i>
-                            <p>Gaming</p>
-                        </div>
-                        <div class="interest-item">
-                            <i class="fas fa-film"></i>
-                            <p>Watching Movies</p>
+                        <div class="skill-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Responsive Design</span>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
-    </main>
+
+        <div class="right-column">
+            <section class="right-column-section wakatime-section">
+                <h2>WakaTime Stats</h2>
+                <p>Last year, I coded for <strong>almost 5 hours</strong> using WakaTime!</p>
+                <p>Since January, 2024, I've coded for a total of <strong>1084 hrs 47 mins</strong>.</p>
+                <p>Data from 2024-2025</p>
+                <div class="github-stats-placeholder">
+                    <img src="wakatime1.png" alt="WakaTime Activity Graph"
+                        style="width: 100%; height: auto; display: block; margin: 0 auto;">
+                </div>
+            </section>
+
+            <section class="right-column-section github-section" style="margin-top: 20px;">
+                <h2>GitHub Stats</h2>
+                <div class="stats">
+                    <img src="stats.png" alt="WakaTime Activity Graph"
+                        style="width: 100%; height: auto; display: block; margin: 0 auto;">
+
+                    GitHub Stats Placeholder
+                </div>
+                <div class="most-used-languages-" style="margin-top: 20px;">
+                    <img src="mostLanguageUses.png" alt="WakaTime Activity Graph"
+                        style="width: 100%; height: auto; display: block; margin: 0 auto;">
+
+                    Most Used Languages Chart Placeholder
+                </div>
+            </section>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-left">
@@ -677,10 +648,10 @@
             <p>Website Developer</p>
         </div>
         <div class="footer-social-icons">
-            <a href="https://github.com/SantiagoJhalesArlick" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.facebook.com/jhales016" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="mailto:jhalesarizosantiago@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/your-github" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://facebook.com/your-facebook" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:jhales.santiago@example.com"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="footer-right">
             &copy; <span id="current-year"></span> Jhales Santiago. All rights reserved.
@@ -688,33 +659,60 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in the footer
-            const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Hamburger menu functionality
-            const hamburgerMenu = document.getElementById('hamburger-menu-icon');
-            const mainNavLinks = document.getElementById('main-nav-links');
+        // Hamburger menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu-icon');
+        const mainNavLinks = document.getElementById('main-nav-links');
 
-            if (hamburgerMenu && mainNavLinks) {
-                hamburgerMenu.addEventListener('click', () => {
-                    mainNavLinks.classList.toggle('active');
-                });
-            }
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavLinks.classList.toggle('active');
+        });
 
-            // Close mobile menu when a link is clicked
-            const navLinks = mainNavLinks.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mainNavLinks.classList.contains('active')) {
-                        mainNavLinks.classList.remove('active');
-                    }
-                });
+        // Close menu when a link is clicked (for mobile)
+        mainNavLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavLinks.classList.contains('active')) {
+                    mainNavLinks.classList.remove('active');
+                }
             });
         });
+
+        // Highlight current page in nav
+        const currentPath = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('.main-nav a');
+        navLinks.forEach(link => {
+            // Remove active class from all links first to ensure only one is active
+            link.classList.remove('active-nav-link');
+
+            // Handle direct page links
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active-nav-link');
+            }
+            // Handle index.html and its hash links (e.g., #skills, #projects)
+            else if (currentPath === 'index.html' && link.getAttribute('href').startsWith('index.html#')) {
+                // For simplicity, we'll just not activate hash links from other pages directly.
+                // The user is on index.html, so 'About' link should not be active unless they are actually on 'about.html'
+            }
+            // For the index.html itself, if no hash is active, default to the "Skills" link (or adjust as needed)
+            if (currentPath === 'index.html' && window.location.hash === '' && link.getAttribute('href') === '#skills') {
+                link.classList.add('active-nav-link');
+            }
+            if (currentPath === '' && link.getAttribute('href') === '#skills') { // for root path
+                link.classList.add('active-nav-link');
+            }
+        });
+        // Special handling for the "About" link to be active only on about.html
+        if (currentPath === 'about.html') {
+            document.querySelector('.main-nav a[href="about.html"]').classList.add('active-nav-link');
+        } else {
+            // Ensure other links are not active if on about.html
+            const aboutLink = document.querySelector('.main-nav a[href="about.html"]');
+            if (aboutLink) { // Check if the element exists before trying to remove class
+                aboutLink.classList.remove('active-nav-link');
+            }
+        }
     </script>
 </body>
 

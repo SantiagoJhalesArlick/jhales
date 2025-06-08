@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
     <title>Contact Jhales Santiago</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
         /* Header and Navigation (Copied from index.html) */
         .header {
             background-color: #1a1a1a;
-            padding: 30px 40px; /* Increased padding from 20px to 30px top/bottom */
+            padding: 20px 40px; /* Adjusted back to 20px for consistency with index.html */
             position: fixed;
             width: 100%;
             top: 0;
@@ -47,6 +48,11 @@
             font-size: 1.2em;
             margin-right: 10px;
             color: #00bfff;
+        }
+
+        .main-nav {
+            display: flex; /* Default to flex for desktop */
+            align-items: center;
         }
 
         .main-nav a {
@@ -90,6 +96,15 @@
 
         .main-nav a:hover i {
             color: #00bfff;
+        }
+
+        /* Hamburger Menu Icon - Added for mobile responsiveness */
+        .hamburger-menu {
+            display: none; /* Hidden by default on desktop */
+            font-size: 1.8em;
+            color: #00bfff;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above other content */
         }
 
         /* Contact Form Section Styling */
@@ -336,27 +351,53 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
-                flex-direction: column;
-                padding: 20px 20px; /* Adjusted padding for small screens */
-                position: relative;
+                flex-direction: row; /* Keep logo and hamburger in a row */
+                justify-content: space-between;
+                padding: 15px 20px;
+                position: fixed; /* Keep fixed position on mobile */
+                width: 100%; /* Ensure it spans full width */
+                box-sizing: border-box; /* Include padding in width */
             }
 
             .main-nav {
-                margin-top: 10px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none; /* Hide nav links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Below the header (adjust based on actual header height) */
+                left: 0;
                 width: 100%;
+                background-color: #222222; /* Darker background for menu */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                padding: 20px 0;
+                border-radius: 0 0 10px 10px;
+                transition: transform 0.3s ease-out;
+                transform: translateY(-100%); /* Start off-screen */
+                box-sizing: border-box; /* Include padding in width */
+            }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+                transform: translateY(0); /* Slide in */
             }
 
             .main-nav a {
-                margin: 5px 15px;
-                font-size: 1em;
+                margin: 10px 20px; /* Adjust spacing for stacked links */
+                font-size: 1.2em;
+                width: fit-content;
+                align-self: flex-start; /* Align links to the left in column */
+            }
+
+            .main-nav a::after {
+                left: 20px; /* Adjust underline position for left alignment */
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger icon on mobile */
             }
 
             .contact-page-section {
                 padding: 40px 15px 20px;
-                margin-top: 80px; /* Adjusted top margin for smaller screens */
+                margin-top: 80px; /* Adjusted top margin to clear fixed header */
                 margin-bottom: 25px;
                 min-height: auto;
             }
@@ -430,6 +471,12 @@
         }
 
         @media (max-width: 480px) {
+            .header-logo {
+                font-size: 1.5em;
+            }
+            .main-nav a {
+                font-size: 1.1em;
+            }
             .contact-page-section h2 {
                 font-size: 1.6em;
             }
@@ -442,14 +489,15 @@
         <a href="index.html" class="header-logo">
             <i class="fas fa-cube"></i> MyPortfolio
         </a>
-        <nav class="main-nav">
+        <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i> <!-- Hamburger Menu Icon -->
+        <nav class="main-nav" id="main-nav-links">
             <a href="about.html"><i class="fas fa-user"></i> About</a>
-            <a href="index.html#skills"><i class="fas fa-code"></i> Skills</a>
+            <a href="index.html#skills"><i class="fa-brands fa-laravel"></i> Skills</a>
             <a href="index.html#projects"><i class="fas fa-folder-open"></i> Projects</a>
             <a href="contact.html" class="active-nav-link"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
     </header>
-    <br><br>
+    <!-- Removed <br><br> as the header is fixed and padding handles spacing -->
 
     <section class="contact-page-section">
         <div class="contact-form-container">
@@ -463,11 +511,11 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="jhalesarizosantiago@gmail.con" required>
+                    <input type="email" id="email" name="email" placeholder="jhalesarizosantiago@gmail.com" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="loveu" required></textarea>
+                    <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">
                     Send Message <i class="fas fa-paper-plane"></i>
@@ -480,7 +528,7 @@
             </div>
 
             <div class="other-connect">
-              
+                <h3>Or connect with me directly:</h3> <!-- Added a title for clarity -->
                 <div class="other-connect-links">
                     <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i> Email</a>
                     <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -510,14 +558,55 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Optional: Highlight current page in nav (if applicable)
+        // Hamburger menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu-icon');
+        const mainNavLinks = document.getElementById('main-nav-links');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        mainNavLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavLinks.classList.contains('active')) {
+                    mainNavLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Highlight current page in nav
         const currentPath = window.location.pathname.split('/').pop();
-        if (currentPath === 'contact.html') {
-            const contactLink = document.querySelector('.main-nav a[href="contact.html"]');
-            if (contactLink) {
-                contactLink.classList.add('active'); // Add an 'active' class for styling
+        const navLinks = document.querySelectorAll('.main-nav a');
+        navLinks.forEach(link => {
+            // Remove active class from all links first to ensure only one is active
+            link.classList.remove('active-nav-link'); 
+            
+            // Handle direct page links
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active-nav-link');
+            } 
+            // Handle index.html and its hash links (e.g., #skills, #projects)
+            else if (currentPath === 'index.html' && link.getAttribute('href').startsWith('index.html#')) {
+                // Check if the hash matches the current section in view, or just handle it if it's the main index page
+                // For simplicity, we'll just not activate hash links from other pages directly.
+                // The user is on index.html, so 'About' link should not be active unless they are actually on 'about.html'
             }
+            // For the index.html itself, if no hash is active, default to the "Skills" link (or adjust as needed)
+            if (currentPath === 'index.html' && window.location.hash === '' && link.getAttribute('href') === '#skills') {
+                link.classList.add('active-nav-link');
+            }
+            if (currentPath === '' && link.getAttribute('href') === '#skills') { // for root path
+                link.classList.add('active-nav-link');
+            }
+        });
+        // Special handling for the "Contact" link to be active only on contact.html
+        if (currentPath === 'contact.html') {
+            document.querySelector('.main-nav a[href="contact.html"]').classList.add('active-nav-link');
+        } else {
+            document.querySelector('.main-nav a[href="contact.html"]').classList.remove('active-nav-link');
         }
+
 
         // Form submission handling for success message
         document.getElementById('contactForm').addEventListener('submit', function(event) {

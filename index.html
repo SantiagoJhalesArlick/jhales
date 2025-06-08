@@ -139,7 +139,7 @@
             letter-spacing: -1px;
         }
 
-        /* NEW: Underline style for the name */
+        /* Underline style for the main H1 name */
         .underline-name {
             position: relative;
             display: inline-block;
@@ -405,6 +405,24 @@
             font-weight: 700;
         }
 
+        /* NEW: Underline style for "Jhales" in the footer */
+        .underline-footer-name {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 3px; /* Space between text and line */
+        }
+
+        .underline-footer-name::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* Thinner line */
+            background-color: #00bfff;
+            border-radius: 1px; /* Slightly rounded */
+        }
+
         .footer-left p {
             margin: 0;
             font-size: 1.1em;
@@ -646,7 +664,7 @@
 
     <div class="hero-section">
         <div class="hero-content">
-            <h1><span class="underline-name">Jhales Santiago</span></h1>
+            <h1><span class="name">Jhales Santiago</span></h1>
             <p class="tagline">I'm a <span id="typewriter-output" class="typewriter-text"></span></p>
             <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto md:mx-0">
                 Passionate about creating both static and dynamic web applications using modern technologies. Mabuhay!
@@ -670,7 +688,7 @@
 
     <footer class="footer">
         <div class="footer-left">
-            <h4>Jhales Santiago</h4>
+            <h4><span class="underline-footer-name">Jhales</span> Santiago</h4>
             <p>Website Developer</p>
         </div>
         <div class="footer-social-icons">

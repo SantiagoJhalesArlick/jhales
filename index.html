@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
+    <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
     <title>Jhales Santiago - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -50,6 +50,11 @@
             color: #00bfff;
         }
 
+        .main-nav {
+            display: flex; /* Default to flex for desktop */
+            align-items: center;
+        }
+
         .main-nav a {
             color: #f0f0f0;
             text-decoration: none;
@@ -91,6 +96,15 @@
 
         .main-nav a:hover i {
             color: #00bfff;
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger-menu {
+            display: none; /* Hidden by default on desktop */
+            font-size: 1.8em;
+            color: #00bfff;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above other content */
         }
 
         /* Hero Section */
@@ -409,27 +423,53 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
-                flex-direction: column;
+                flex-direction: row; /* Keep logo and hamburger in a row */
+                justify-content: space-between;
                 padding: 15px 20px;
-                position: relative;
+                position: fixed; /* Keep fixed position on mobile */
+                width: 100%; /* Ensure it spans full width */
+                box-sizing: border-box; /* Include padding in width */
             }
 
             .main-nav {
-                margin-top: 10px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none; /* Hide nav links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Below the header (adjust based on actual header height) */
+                left: 0;
                 width: 100%;
+                background-color: #222222; /* Darker background for menu */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                padding: 20px 0;
+                border-radius: 0 0 10px 10px;
+                transition: transform 0.3s ease-out;
+                transform: translateY(-100%); /* Start off-screen */
+                box-sizing: border-box; /* Include padding in width */
+            }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+                transform: translateY(0); /* Slide in */
             }
 
             .main-nav a {
-                margin: 5px 15px;
-                font-size: 1em;
+                margin: 10px 20px; /* Adjust spacing for stacked links */
+                font-size: 1.2em;
+                width: fit-content;
+                align-self: flex-start; /* Align links to the left in column */
+            }
+
+            .main-nav a::after {
+                left: 20px; /* Adjust underline position for left alignment */
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger icon on mobile */
             }
 
             .hero-section {
                 min-height: auto;
-                padding-top: 50px;
+                padding-top: 80px; /* Adjusted padding to account for fixed header */
             }
 
             h1 {
@@ -523,7 +563,8 @@
         <a href="index.html" class="header-logo">
             <i class="fas fa-cube"></i> MyPortfolio
         </a>
-        <nav class="main-nav">
+        <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
+        <nav class="main-nav" id="main-nav-links">
             <a href="about.html"><i class="fas fa-user"></i> About</a>
             <a href="#skills"><i class="fa-brands fa-laravel"></i> Skills</a>
             <a href="#projects"><i class="fas fa-folder-open"></i> Projects</a>
@@ -545,10 +586,26 @@
         </div>
     </div>
 
+    <!-- The index.html provided only has the hero section. I will add placeholder sections for skills and projects as they are linked in the navigation to ensure full functionality. -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <p>I possess a diverse skill set in web development, constantly learning and adapting to new technologies.</p>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>React.js</li>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>MongoDB</li>
+            <li>SQL</li>
+            <li>Git & GitHub</li>
+            <li>Responsive Design</li>
+            <li>UI/UX Principles</li>
+        </ul>
+    </section>
+
    
-
-    <!-- Removed the contact section from index.html as it will now be on contact.html -->
-
     <footer class="footer">
         <div class="footer-left">
             <h4>Jhales Santiago</h4>
@@ -569,6 +626,23 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // Hamburger menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu-icon');
+        const mainNavLinks = document.getElementById('main-nav-links');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        mainNavLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavLinks.classList.contains('active')) {
+                    mainNavLinks.classList.remove('active');
+                }
+            });
+        });
+
         // Intersection Observer for section animations
         const sections = document.querySelectorAll('section');
 
@@ -583,7 +657,8 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 } else {
-                    entry.target.classList.remove('visible'); /* Remove for re-animation on scroll back */
+                    // Optional: Remove for re-animation if scrolling back up
+                    entry.target.classList.remove('visible');
                 }
             });
         }, observerOptions);

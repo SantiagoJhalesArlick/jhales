@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Jhales Santiago</title>
+    <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
+    <title>Jhales Santiago - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -21,7 +22,7 @@
         /* Header and Navigation */
         .header {
             background-color: #1a1a1a;
-            padding: 30px 40px;
+            padding: 20px 40px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -47,6 +48,11 @@
             font-size: 1.2em;
             margin-right: 10px;
             color: #00bfff;
+        }
+
+        .main-nav {
+            display: flex; /* Default to flex for desktop */
+            align-items: center;
         }
 
         .main-nav a {
@@ -92,6 +98,15 @@
             color: #00bfff;
         }
 
+        /* Hamburger Menu Icon */
+        .hamburger-menu {
+            display: none; /* Hidden by default on desktop */
+            font-size: 1.8em;
+            color: #00bfff;
+            cursor: pointer;
+            z-index: 1001; /* Ensure it's above other content */
+        }
+
         /* About Page Specific Styles */
         .about-page-section {
             padding: 100px 40px 50px; /* Top, Right, Bottom, Left - Adjusted for wider padding */
@@ -126,11 +141,25 @@
             display: block;
         }
 
-        /* New container for the main left and right columns */
+        /* Main content wrapper with equal height columns and divider */
         .main-content-wrapper {
-            display: flex; /* Use flexbox for horizontal layout */
-            gap: 30px; /* Space between the left and right columns */
-            flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+            display: flex;
+            flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+            position: relative; /* For the absolute positioned divider */
+            padding-right: 15px; /* Space for the divider */
+        }
+
+        /* Divider in the middle */
+        .main-content-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%; /* Position in the middle */
+            width: 1px; /* Divider thickness */
+            background-color: #333333; /* Divider color */
+            transform: translateX(-50%); /* Center the divider */
+            z-index: 1; /* Ensure divider is above other content if necessary */
         }
 
         .about-left-column,
@@ -139,8 +168,18 @@
             flex-direction: column;
             gap: 30px; /* Space between sections within each column */
             flex: 1; /* Each column takes equal available space */
-            min-width: 300px; /* Ensure columns don't shrink too much before wrapping */
+            min-width: 300px; /* Minimum width before wrapping to single column */
+            box-sizing: border-box; /* Include padding in width calculation */
         }
+
+        .about-left-column {
+            padding-right: 15px; /* Padding for content near the divider */
+        }
+
+        .about-right-column {
+            padding-left: 15px; /* Padding for content near the divider */
+        }
+
 
         /* Who I Am Card (Profile Pic + Who I Am Text) */
         .who-i-am-card {
@@ -198,7 +237,16 @@
             background-color: #2b2b2b;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Consistent gap between internal stat-cards */
+            flex-grow: 1; /* Allow sections to grow and fill available height within their column */
         }
+        /* Override flex-grow for sections that shouldn't stretch, if needed */
+        .who-i-am-card {
+            flex-grow: 0; /* Keep its natural height */
+        }
+
 
         /* Inner Section Titles */
         .education-section h3,
@@ -268,6 +316,7 @@
             border-radius: 8px;
             border: 1px solid #444;
             text-align: left;
+            margin-top: 0 !important; /* Override inline styles if any */
         }
         .stat-card h4 {
             color: #00bfff;
@@ -437,12 +486,22 @@
 
         /* Responsive adjustments */
         @media (max-width: 1024px) {
-            .main-content-wrapper { /* Adjust wrapper for smaller screens */
+            .main-content-wrapper { /* Adjust wrapper for smaller desktops/laptops */
                 flex-direction: column; /* Stack columns */
                 gap: 40px; /* Space between stacked columns */
+                padding-right: 0; /* Remove padding when stacked */
+            }
+            .main-content-wrapper::after {
+                display: none; /* Hide divider when columns are stacked */
+            }
+            .about-left-column {
+                padding-right: 0; /* Remove padding when stacked */
+            }
+            .about-right-column {
+                padding-left: 0; /* Remove padding when stacked */
             }
             .who-i-am-card {
-                grid-template-columns: 1fr;
+                /* No change needed, already responsive */
             }
             .profile-pic {
                 margin: 0 auto 20px auto;
@@ -457,26 +516,50 @@
 
         @media (max-width: 768px) {
             .header {
-                flex-direction: column;
-                padding: 20px 20px;
-                position: relative;
+                flex-direction: row; /* Keep logo and hamburger in a row */
+                justify-content: space-between;
+                padding: 15px 20px;
+                position: fixed; /* Keep fixed position on mobile */
             }
 
             .main-nav {
-                margin-top: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none; /* Hide nav links by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Below the header */
+                left: 0;
                 width: 100%;
+                background-color: #222222; /* Darker background for menu */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                padding: 20px 0;
+                border-radius: 0 0 10px 10px;
+                transition: transform 0.3s ease-out;
+                transform: translateY(-100%); /* Start off-screen */
+            }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+                transform: translateY(0); /* Slide in */
             }
 
             .main-nav a {
-                margin: 5px 15px;
-                font-size: 1em;
+                margin: 10px 20px; /* Adjust spacing for stacked links */
+                font-size: 1.2em;
+                width: fit-content;
+                align-self: flex-start; /* Align links to the left in column */
+            }
+
+            .main-nav a::after {
+                left: 20px; /* Adjust underline position for left alignment */
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger icon on mobile */
             }
 
             .about-page-section {
-                padding: 60px 15px 30px;
-                margin-top: 80px;
+                padding: 80px 15px 30px; /* Adjusted padding to account for fixed header */
+                margin-top: 0; /* No extra margin needed if header is fixed */
                 margin-bottom: 30px;
                 gap: 30px;
             }
@@ -496,8 +579,8 @@
                 gap: 20px;
             }
             .profile-pic {
-                width: 200px;
-                height: 200px;
+                width: 150px;
+                height: 150px;
             }
 
             .freelance-stats-grid-inner,
@@ -534,8 +617,7 @@
                 font-size: 1.5em;
             }
             .main-nav a {
-                margin: 5px 10px;
-                font-size: 0.9em;
+                font-size: 1.1em;
             }
             .about-page-section > h2 {
                 font-size: 1.8em;
@@ -544,8 +626,8 @@
                 font-size: 1.2em;
             }
             .profile-pic {
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
             }
             .freelance-stats-grid-inner {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -565,7 +647,8 @@
         <a href="index.html" class="header-logo">
             <i class="fas fa-cube"></i> MyPortfolio
         </a>
-        <nav class="main-nav">
+        <i class="fas fa-bars hamburger-menu" id="hamburger-menu-icon"></i>
+        <nav class="main-nav" id="main-nav-links">
             <a href="about.html" class="active-nav-link"><i class="fas fa-user"></i> About</a>
             <a href="index.html#skills"><i class="fas fa-code"></i> Skills</a>
             <a href="index.html#projects"><i class="fas fa-folder-open"></i> Projects</a>
@@ -576,13 +659,13 @@
     <section class="about-page-section">
         <h2>About Me</h2>
 
-        <!-- New wrapper for the main left and right content columns -->
+        <!-- Main content wrapper to hold left and right columns -->
         <div class="main-content-wrapper">
             <div class="about-left-column">
                 <div class="who-i-am-card">
                     <div class="profile-pic">
                         <!-- Replace with your actual profile picture -->
-                        <img src="jhalespicture.jpg" alt="Jhales Santiago">
+                        <img src="jhalespicture.jpg" alt="[Larawan ni Jhales Santiago]">
                     </div>
                     <div class="who-i-am">
                         <h3>Who I Am</h3>
@@ -596,14 +679,9 @@
                     <div class="stat-card">
                         <h4>Activity</h4>
                         <!-- Replace with your WakaTime stats image or live data integration -->
-                        <img src="https://placehold.co/400x120/222222/00bfff?text=WakaTime+Graph+Placeholder" alt="WakaTime Activity">
+                        <img src="https://placehold.co/400x120/222222/00bfff?text=WakaTime+Graph+Placeholder" alt="[WakaTime Graph Placeholder]">
                         <p>Last year, I coded for <strong>584 hrs 35 mins</strong> using WakaTime! Since July 9, 2024, I've coded for a total of <strong>787 hrs 47 mins</strong>.</p>
                         <p style="font-size: 0.8em; opacity: 0.7;">Data from 2024-2025</p>
-                    </div>
-                                        <div class="stat-card" style="margin-top: 20px;">
-                        <h4>Most Used Languages</h4>
-                        <!-- Placeholder for language graph -->
-                        <img src="https://placehold.co/400x100/222222/00bfff?text=Language+Graph+Placeholder" alt="Most Used Languages">
                     </div>
                 </div>
             </div>
@@ -613,8 +691,8 @@
                     <h3>Education</h3>
                     <div class="education-item">
                         <p><strong>Bachelor of Science in Information Technology</strong></p>
-                        <p>Bestlink College of the Philippines 2025</p>
-                        <p>Currently in my 4th year of studies, focusing on web development.</p>
+                        <p>PHINMA University of (2023-2027 - Expected Graduation)</p>
+                        <p>Currently in my 2nd year of studies, focusing on web development.</p>
                     </div>
                 </div>
 
@@ -644,7 +722,7 @@
                     <div class="stat-card">
                         <h4>AnyaDevArtisan404's GitHub Stats</h4>
                         <!-- Replace with your GitHub stats image or live data integration -->
-                        <img src="https://placehold.co/400x160/222222/00bfff?text=GitHub+Stats+Placeholder" alt="GitHub Stats">
+                        <img src="https://placehold.co/400x160/222222/00bfff?text=GitHub+Stats+Placeholder" alt="[GitHub Stats Placeholder]">
                         <ul>
                             <li>Total Stars Earned: <span>342</span></li>
                             <li>Total Commits: <span>294</span></li>
@@ -653,12 +731,22 @@
                             <li>Contributed to (last year): <span>0</span></li>
                         </ul>
                     </div>
-                 </div>
+                    <div class="stat-card">
+                        <h4>Most Used Languages</h4>
+                        <!-- Placeholder for language graph -->
+                        <img src="https://placehold.co/400x100/222222/00bfff?text=Language+Graph+Placeholder" alt="[Language Graph Placeholder]">
+                    </div>
+                    <div class="stat-card">
+                        <h4>Contributions</h4>
+                        <!-- Placeholder for contributions graph -->
+                        <img src="https://placehold.co/400x80/222222/00bfff?text=Contributions+Graph+Placeholder" alt="[Contributions Graph Placeholder]">
+                        <p>Total Contributions: <span>342</span> | Current Streak: <span>0</span> | Longest Streak: <span>8</span></p>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Personal Interests section moved outside main-about-grid to span full width -->
+        <!-- Personal Interests section is outside main-content-wrapper to span full width -->
         <div class="personal-interests-section">
             <h3>Personal Interests</h3>
             <div class="personal-interests-grid">
@@ -666,14 +754,21 @@
                     <i class="fas fa-book-open"></i>
                     <p>Reading</p>
                 </div>
-        
+                <div class="interest-item">
+                    <i class="fas fa-camera"></i>
+                    <p>Photography</p>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-bicycle"></i>
+                    <p>Cycling</p>
+                </div>
                 <div class="interest-item">
                     <i class="fas fa-music"></i>
                     <p>Music</p>
                 </div>
                 <div class="interest-item">
                     <i class="fas fa-motorcycle"></i>
-                    <p>Motorcycle</p>
+                    <p>Motorcycling</p>
                 </div>
                 <div class="interest-item">
                     <i class="fas fa-code"></i>
@@ -712,14 +807,40 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // Optional: Highlight current page in nav
+        // Hamburger menu functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu-icon');
+        const mainNavLinks = document.getElementById('main-nav-links');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        mainNavLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNavLinks.classList.contains('active')) {
+                    mainNavLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Highlight current page in nav
         const currentPath = window.location.pathname.split('/').pop();
-        if (currentPath === 'about.html') {
-            const aboutLink = document.querySelector('.main-nav a[href="about.html"]');
-            if (aboutLink) {
-                aboutLink.classList.add('active'); // Add an 'active' class for styling
+        const navLinks = document.querySelectorAll('.main-nav a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active-nav-link');
+            } else if (link.getAttribute('href') === 'index.html#skills' && currentPath === 'index.html') {
+                 // Special handling for hash links if on index.html
+                 link.classList.remove('active-nav-link');
             }
+        });
+        // Ensure "About" is active if on about.html and it's the only page
+        if (currentPath === 'about.html' || currentPath === '') { // Add empty string for root/default page
+            document.querySelector('.main-nav a[href="about.html"]').classList.add('active-nav-link');
         }
+
+
     </script>
 </body>
 </html>

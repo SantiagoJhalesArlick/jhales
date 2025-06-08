@@ -688,18 +688,15 @@
             }
 
             .education-section {
-                background-color: #F0F0F0;
-                /* Gray background for mobile */
-                color: #1a1a1a;
-                /* Adjust text color for readability */
+                background-color: #1a1a1a; /* Dark background, same as other sections */
+                color: #f0f0f0; /* Light text color */
                 padding: 20px;
                 border-radius: 8px;
                 box-sizing: border-box;
             }
 
             .education-section h3 {
-                color: #00bfff;
-                /* Keep the title color */
+                color: #00bfff; /* Keep the title color */
                 text-align: left;
                 /* Align title to the left within the box */
                 width: fit-content;
@@ -711,19 +708,18 @@
             }
 
             .education-section .education-item p {
-                color: #333;
-                /* Adjust paragraph color */
+                color: #d0d0d0; /* Adjust paragraph color */
             }
 
             .education-section .education-item strong {
-                color: #00bfff;
-                /* Keep strong color */
+                color: #00bfff; /* Keep strong color */
             }
 
             /* Move Education section visually after Who I Am on mobile */
             /* Ensure all sections within .main-content-wrapper are treated as flex items */
             .main-content-wrapper > div {
-                order: initial; /* Reset order for all direct children */
+                order: initial;
+                /* Reset order for all direct children */
             }
 
             /* Now explicitly set the order for the desired sections */

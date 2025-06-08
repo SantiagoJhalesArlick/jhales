@@ -139,10 +139,10 @@
             letter-spacing: -1px;
         }
 
-        /* UPDATED: Tagline font size */
+        /* Tagline font size */
         .tagline {
             color: #d0d0d0;
-            font-size: 2.2em; /* Increased from 1.8em */
+            font-size: 3.2em; /* Default for larger screens */
             margin-bottom: 40px;
             font-weight: 300;
         }
@@ -203,7 +203,6 @@
             transform: scale(1.1);
         }
 
-        /* Hero buttons will always be visible by default now */
         .hero-buttons {
             display: flex;
             flex-direction: column;
@@ -488,9 +487,9 @@
                 font-size: 3.2em; /* Adjusted for mobile */
             }
 
-            /* UPDATED: Tagline font size for mobile */
+            /* Tagline font size for mobile (inside 768px media query) */
             .tagline {
-                font-size: 1.8em; /* Increased from 1.6em for mobile */
+                font-size: 2.5em; /* Increased from 2.2em for mobile */
             }
 
             .hero-content p {
@@ -543,7 +542,7 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Footer adjustments for mobile */
+            /* Footer adjustments for mobile (ORDER CHANGED) */
             .footer {
                 flex-direction: column;
                 padding: 30px 15px;
@@ -554,17 +553,19 @@
                 text-align: center;
                 min-width: unset;
                 margin: 0 0 15px 0; /* Ensures a gap after "Jhales Santiago Website Developer" */
+                order: 1; /* Jhales Santiago / Website Developer will be first */
+            }
+
+            .footer-social-icons {
+                margin-bottom: 20px; /* Space between icons and copyright */
+                order: 2; /* Social icons will be second */
             }
 
             .footer-right {
                 text-align: center;
                 min-width: unset;
                 margin: 0;
-            }
-
-            .footer-social-icons {
-                order: -1;
-                margin-bottom: 20px;
+                order: 3; /* Copyright will be third */
             }
         }
 
@@ -573,9 +574,9 @@
                 font-size: 2.6em; /* Further adjustment for smaller phones */
             }
 
-            /* UPDATED: Tagline font size for smaller phones */
+            /* Tagline font size for smaller phones (inside 480px media query) */
             .tagline {
-                font-size: 1.5em; /* Increased from 1.3em for smaller phones */
+                font-size: 2.0em; /* Increased from 1.8em for smaller phones */
             }
 
             .hero-content p {
@@ -706,10 +707,6 @@
         sections.forEach(section => {
             sectionObserver.observe(section);
         });
-
-        // Removed the heroButtons variable and the revealHeroButtons function
-        // because the buttons are now always visible by default through HTML/CSS changes.
-
 
         document.addEventListener('DOMContentLoaded', () => {
             const textElement = document.getElementById('typewriter-output');

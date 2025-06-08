@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="jhales.png" />
-    <title>Jhales Santiago | Full-Stack Web Developer</title>
+    <link rel="icon" type="image/jpeg" href="jhales.png" /> <!-- Added favicon -->
+    <title>Contact Me - Jhales Santiago</title>
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Inter Font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Base styles from the provided code */
         body {
             font-family: 'Inter', Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            background-color: #1a1a1a; /* Dark background */
+            color: #f0f0f0; /* Light text color */
             margin: 0;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Header styles */
         .header {
             background-color: #1a1a1a;
             padding: 20px 40px;
@@ -37,7 +42,7 @@
         .header-logo {
             font-size: 1.8em;
             font-weight: 700;
-            color: #00bfff;
+            color: #00bfff; /* Accent color */
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -105,175 +110,7 @@
             z-index: 1001;
         }
 
-        .contact-page-section {
-            padding: 40px 20px 30px;
-            max-width: 550px;
-            margin: 100px auto 50px auto;
-            background-color: #222222;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-sizing: border-box;
-            min-height: calc(100vh - 200px);
-            justify-content: flex-start;
-        }
-
-        .contact-form-container {
-            width: 100%;
-            text-align: left;
-            padding: 0 30px;
-        }
-
-        .contact-page-section h2 {
-            text-align: center;
-            color: #00bfff;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .contact-page-section p.description {
-            text-align: center;
-            font-size: 0.95em;
-            margin-bottom: 20px;
-            color: #d0d0d0;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #f0f0f0;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            background-color: #333333;
-            color: #f0f0f0;
-            font-size: 0.9em;
-            box-sizing: border-box;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #888;
-            opacity: 1;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            background-color: #3a3a3a;
-            box-shadow: 0 0 0 2px #00bfff;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-            max-height: 250px;
-        }
-
-        .submit-btn {
-            background-color: #00bfff;
-            color: #1a1a1a;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 0.95em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .submit-btn:hover {
-            background-color: #008fcc;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
-        }
-
-        .message-success {
-            background-color: #28a745;
-            color: #ffffff;
-            padding: 15px 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1em;
-            font-weight: 600;
-            display: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .other-connect {
-            margin-top: 35px;
-            text-align: center;
-        }
-
-        .other-connect h3 {
-            font-size: 1.2em;
-            margin-bottom: 18px;
-            color: #00bfff;
-        }
-
-        .other-connect-links {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .other-connect-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #2b2b2b;
-            color: #f0f0f0;
-            padding: 8px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 0.85em;
-            font-weight: 500;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .other-connect-links a i {
-            margin-right: 8px;
-        }
-
-        .other-connect-links a:hover {
-            background-color: #00bfff;
-            color: #1a1a1a;
-            transform: translateY(-2px);
-        }
-
+        /* Footer styles */
         .footer {
             background-color: #1a1a1a;
             color: #f0f0f0;
@@ -300,6 +137,23 @@
             font-size: 1.8em;
             color: #00bfff;
             font-weight: 700;
+        }
+
+        .underline-footer-name {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+
+        .underline-footer-name::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00bfff;
+            border-radius: 1px;
         }
 
         .footer-left p {
@@ -346,6 +200,7 @@
             margin-left: 20px;
         }
 
+        /* MEDIA QUERIES FOR MOBILE */
         @media (max-width: 768px) {
             .header {
                 flex-direction: row;
@@ -391,102 +246,205 @@
             .hamburger-menu {
                 display: block;
             }
-
-            .contact-page-section {
-                padding: 40px 15px 20px;
-                margin-top: 80px;
-                margin-bottom: 25px;
-                min-height: auto;
-            }
-
-            .contact-form-container {
-                padding: 0 10px;
-            }
-
-            .contact-page-section h2 {
-                font-size: 2em;
-            }
-
-            .contact-page-section p.description {
-                font-size: 0.9em;
-                margin-bottom: 20px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 8px;
-                font-size: 0.85em;
-            }
-
-            .form-group textarea {
-                min-height: 80px;
-            }
-
-            .submit-btn {
-                width: 100%;
-                padding: 10px 20px;
-                font-size: 0.9em;
-            }
-
-            .other-connect {
-                margin-top: 25px;
-            }
-
-            .other-connect h3 {
-                font-size: 1.1em;
-                margin-bottom: 15px;
-            }
-
-            .other-connect-links {
-                gap: 8px;
-            }
-
-            .other-connect-links a {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-                padding: 8px 15px;
-                font-size: 0.8em;
-            }
-
             .footer {
                 flex-direction: column;
-                padding: 25px 15px;
+                padding: 30px 15px;
                 text-align: center;
             }
 
-            .footer-left,
-            .footer-right,
-            .footer-social-icons {
+            .footer-left {
                 text-align: center;
                 min-width: unset;
-                margin: 0 0 10px 0;
+                margin: 0 0 15px 0;
+                order: 1;
             }
 
             .footer-social-icons {
-                order: -1;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
+                order: 2;
+            }
+
+            .footer-right {
+                text-align: center;
+                min-width: unset;
+                margin: 0;
+                order: 3;
             }
         }
 
         @media (max-width: 480px) {
-            .header-logo {
-                font-size: 1.5em;
+            .footer {
+                padding: 20px 10px;
             }
+        }
 
-            .main-nav a {
-                font-size: 1.1em;
-            }
+        /* Custom scrollbar styles for a sleeker look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d3748; /* bg-gray-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00bfff; /* Accent color */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #008fcc; /* Darker accent on hover */
+        }
 
-            .contact-page-section h2 {
-                font-size: 1.6em;
-            }
+        /* Form specific styles to align with the new theme */
+        .contact-form-container {
+            background-color: #222222; /* Darker background for form container */
+            color: #f0f0f0;
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 600px; /* Increased max width for the form */
+            margin: 0 auto; /* Center the form */
+            box-sizing: border-box; /* Include padding in width */
+            margin-top: 100px; /* Space for fixed header */
+            margin-bottom: 50px;
+        }
+
+        .contact-form-container h1 {
+            color: #00bfff; /* Accent color for heading */
+            font-size: 3em; /* Larger heading */
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .contact-form-container p {
+            color: #d0d0d0;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .contact-form-container label {
+            color: #f0f0f0;
+            font-size: 1em;
+            margin-bottom: 8px;
+            display: block; /* Ensure label is block */
+        }
+
+        .contact-form-container input[type="text"],
+        .contact-form-container input[type="email"],
+        .contact-form-container textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #3a3a3a; /* Input background */
+            border: 1px solid #555555; /* Input border */
+            color: #f0f0f0;
+            /* Placeholder color handled by native browser styles or Tailwind's placeholder-{color} if used */
+            margin-bottom: 20px; /* Space between inputs */
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form-container input[type="text"]:focus,
+        .contact-form-container input[type="email"]:focus,
+        .contact-form-container textarea:focus {
+            outline: none;
+            border-color: #00bfff;
+            box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.3); /* Focus glow */
+        }
+
+        .contact-form-container textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form-container button[type="submit"] {
+            background-color: #00bfff;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+        }
+
+        .contact-form-container button[type="submit"]:hover {
+            background-color: #008fcc;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 10000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2b2b2b; /* Dark background */
+            margin: auto; /* Centered */
+            padding: 30px;
+            border: 1px solid #00bfff; /* Accent border */
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px; /* Max width for responsiveness */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            text-align: center;
+            position: relative;
+            animation: fadeInModal 0.3s ease-out;
+        }
+
+        .modal-content h2 {
+            color: #00bfff;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            color: #f0f0f0;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        .modal-close-btn {
+            background-color: #00bfff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background-color: #008fcc;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
 
-<body>
-
+    <!-- Header Section -->
     <header class="header">
         <a href="index.html" class="header-logo">
             <i class="fas fa-cube"></i> MyPortfolio
@@ -495,60 +453,54 @@
         <nav class="main-nav" id="main-nav-links">
             <a href="about.html"><i class="fas fa-user"></i> About</a>
             <a href="projects.html"><i class="fas fa-folder-open"></i> Projects</a>
-            <a href="contact.html" class="active-nav-link"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
     </header>
 
-    <section class="contact-page-section">
+    <!-- Main Content Area - Contact Form -->
+    <main class="flex-grow flex items-center justify-center py-8 px-4">
         <div class="contact-form-container">
-            <h2>Contact Me</h2>
-            <p class="description">Have a project in mind or want to collaborate? Feel free to reach out!</p>
+            <h1>Contact Me</h1>
+            <p>
+                Have a project in mind or want to collaborate? Feel free to reach out!
+            </p>
 
-            <form class="contact-form" id="contactForm" action="submit_form.php" method="POST">
-                <div class="form-group">
+            <form id="contact-form">
+                <!-- Name Field -->
+                <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your name" required>
                 </div>
-                <div class="form-group">
+
+                <!-- Email Field -->
+                <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your-mail@sample.com" required>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                 </div>
-                <div class="form-group">
+
+                <!-- Message Field -->
+                <div>
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="..." required></textarea>
+                    <textarea id="message" name="message" placeholder="Your message here ..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">
-                    Send Message <i class="fas fa-paper-plane"></i>
+
+                <!-- Submit Button -->
+                <button type="submit">
+                    Send Message
                 </button>
             </form>
-
-            <div id="successMessage" class="message-success">
-                Message sent successfully!
-            </div>
-
-            <div class="other-connect">
-                <h3>Or connect with me directly:</h3>
-                <div class="other-connect-links">
-                    <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i>
-                        Facebook</a>
-                    <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-
-                    <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i>
-                        GitHub</a>
-                </div>
-            </div>
         </div>
-    </section>
+    </main>
 
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-left">
-            <h4>Jhales Santiago</h4>
+            <h4><span class="underline-footer-name">Jhales</span> Santiago</h4>
             <p>Website Developer</p>
         </div>
         <div class="footer-social-icons">
             <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a" target="_blank"><i
-                    class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
@@ -557,9 +509,20 @@
         </div>
     </footer>
 
+    <!-- Success Message Modal -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Message Sent!</h2>
+            <p>Thank you for reaching out. I'll get back to you soon.</p>
+            <button class="modal-close-btn" onclick="document.getElementById('success-modal').style.display='none'">Close</button>
+        </div>
+    </div>
+
     <script>
+        // Set current year in the footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
+        // Hamburger menu functionality
         const hamburgerMenu = document.getElementById('hamburger-menu-icon');
         const mainNavLinks = document.getElementById('main-nav-links');
 
@@ -575,43 +538,24 @@
             });
         });
 
-        const currentPath = window.location.pathname.split('/').pop();
-        const navLinks = document.querySelectorAll('.main-nav a');
-        navLinks.forEach(link => {
-            link.classList.remove('active-nav-link');
+        // Contact form submission handling
+        const contactForm = document.getElementById('contact-form');
+        const successModal = document.getElementById('success-modal');
 
-            if (link.getAttribute('href') === currentPath) {
-                link.classList.add('active-nav-link');
-            }
-            else if (currentPath === 'index.html' && link.getAttribute('href').startsWith('index.html#')) {
-            }
-            if (currentPath === 'index.html' && window.location.hash === '' && link.getAttribute('href') === '#skills') {
-                link.classList.add('active-nav-link');
-            }
-            if (currentPath === '' && link.getAttribute('href') === '#skills') {
-                link.classList.add('active-nav-link');
-            }
-        });
-        if (currentPath === 'contact.html') {
-            document.querySelector('.main-nav a[href="contact.html"]').classList.add('active-nav-link');
-        } else {
-            document.querySelector('.main-nav a[href="contact.html"]').classList.remove('active-nav-link');
-        }
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
 
+            // Here you would typically send the form data to a server
+            // For this example, we'll just simulate success
 
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            this.reset();
+            // Clear form fields
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
 
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 3000);
-
-            // });
+            // Show the success modal
+            successModal.style.display = 'flex'; // Use flex to center the modal content
         });
     </script>
 </body>
-
 </html>

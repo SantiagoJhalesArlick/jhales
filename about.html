@@ -5,22 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="jhalespicture.jpg" />
-    <title>About</title>
+    <title>About - MyPortfolio</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ------------------------- */
+        /* GLOBAL & ROOT STYLES      */
+        /* ------------------------- */
+        :root {
+            --primary-color: #00bfff;
+            --background-color: #1a1a1a;
+            --surface-color: #333333;
+            --text-color: #f0f0f0;
+            --text-muted-color: #d0d0d0;
+            --border-color: #444444;
+        }
+
         body {
             font-family: 'Inter', Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            background-color: var(--background-color);
+            color: var(--text-color);
             margin: 0;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
+        
+        /* ------------------------- */
+        /* HEADER & NAVIGATION       */
+        /* ------------------------- */
         .header {
-            background-color: #1a1a1a;
+            background-color: var(--background-color);
             padding: 20px 40px;
             position: fixed;
             width: 100%;
@@ -31,13 +48,13 @@
             justify-content: space-between;
             align-items: center;
             box-sizing: border-box;
-            border-bottom: 1px solid #333333;
+            border-bottom: 1px solid var(--surface-color);
         }
 
         .header-logo {
             font-size: 1.8em;
             font-weight: 700;
-            color: #00bfff;
+            color: var(--primary-color);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -46,7 +63,6 @@
         .header-logo i {
             font-size: 1.2em;
             margin-right: 10px;
-            color: #00bfff;
         }
 
         .main-nav {
@@ -55,7 +71,7 @@
         }
 
         .main-nav a {
-            color: #f0f0f0;
+            color: var(--text-color);
             text-decoration: none;
             margin-left: 30px;
             font-size: 1.1em;
@@ -69,10 +85,19 @@
 
         .main-nav a i {
             margin-right: 8px;
-            color: #f0f0f0;
             transition: color 0.3s ease;
         }
 
+        .main-nav a.active-nav-link,
+        .main-nav a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .main-nav a:hover i {
+            color: var(--primary-color);
+        }
+        
         .main-nav a::after {
             content: '';
             position: absolute;
@@ -80,67 +105,45 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #00bfff;
+            background-color: var(--primary-color);
             transition: width 0.3s ease;
         }
 
-        .main-nav a:hover::after {
+        .main-nav a:hover::after,
+        .main-nav a.active-nav-link::after {
             width: 100%;
-        }
-
-        .main-nav a:hover {
-            color: #00bfff;
-            transform: translateY(-2px);
-        }
-
-        .main-nav a:hover i {
-            color: #00bfff;
         }
 
         .hamburger-menu {
             display: none;
             font-size: 1.8em;
-            color: #00bfff;
+            color: var(--primary-color);
             cursor: pointer;
             z-index: 1001;
         }
 
+        /* ------------------------- */
+        /* MAIN CONTENT & LAYOUT     */
+        /* ------------------------- */
         .about-page-section {
-            padding: 100px 40px 50px;
+            padding: 120px 40px 50px;
             max-width: 1100px;
-            margin: 100px auto 50px auto;
-            background-color: #1a1a1a;
-            border-radius: 10px;
+            margin: 0 auto;
             box-sizing: border-box;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
         }
 
-        .about-page-section>h2 {
-            color: #f0f0f0;
+        .about-page-section > h2 {
             font-size: 3em;
             font-weight: 700;
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             text-align: left;
-        }
-
-        .about-page-section h3 {
-            color: #00bfff;
-            font-size: 1.6em;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: block;
-            margin-top: 0;
         }
 
         .main-content-wrapper {
             display: flex;
-            flex-wrap: wrap;
+            gap: 30px;
             position: relative;
-            padding-right: 15px;
         }
 
         .main-content-wrapper::after {
@@ -150,7 +153,7 @@
             bottom: 0;
             left: 50%;
             width: 1px;
-            background-color: #333333;
+            background-color: var(--surface-color);
             transform: translateX(-50%);
             z-index: 1;
         }
@@ -161,37 +164,47 @@
             flex-direction: column;
             gap: 30px;
             flex: 1;
-            min-width: 300px;
-            box-sizing: border-box;
+            min-width: 0; /* Prevents flexbox overflow */
         }
 
-        .about-left-column {
-            padding-right: 15px;
-        }
-
-        .about-right-column {
-            padding-left: 15px;
-        }
-        
-        /* MODIFIED: Renamed from who-i-am-card for clarity */
-        .profile-card {
+        /* ------------------------- */
+        /* CARD COMPONENTS           */
+        /* ------------------------- */
+        .who-i-am-card,
+        .education-section,
+        .freelance-stats-section,
+        .wakatime-section,
+        .github-section,
+        .interests-box {
+            background-color: var(--background-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background-color: #2a2a2a; /* Slightly different background to stand out */
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            box-sizing: border-box;
+            gap: 20px;
         }
-
+        
+        .who-i-am-card {
+            align-items: center;
+        }
+        
+        .who-i-am-card h3,
+        .education-section h3,
+        .freelance-stats-section h3,
+        .wakatime-section h3,
+        .github-section h3 {
+            color: var(--primary-color);
+            font-size: 1.6em;
+            font-weight: 600;
+            margin: 0;
+        }
+        
         .profile-pic {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid ;
+            border: 4px solid var(--primary-color);
             box-shadow: 0 0 0 5px rgba(0, 191, 255, 0.2);
         }
 
@@ -202,83 +215,101 @@
             object-fit: cover;
         }
         
-        /* NEW/MODIFIED: Container for the boxed "Who I Am" text */
-        .who-i-am-section p {
-            font-size: 1.0em;
-            line-height: 1.7;
-            margin-bottom: 10px;
+        .stat-card {
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            box-sizing: border-box;
         }
-        .who-i-am-section p:last-child {
+        
+        .stat-card p {
+            font-size: 0.95em;
+            color: var(--text-muted-color);
+            margin: 0 0 10px 0;
+        }
+        .stat-card p:last-child {
             margin-bottom: 0;
         }
 
-        .education-section,
-        .freelance-stats-section,
-        .wakatime-section,
-        .github-section,
-        .who-i-am-section { /* ADDED: who-i-am-section to the group */
-            padding: 25px;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            flex-grow: 1;
+        .stat-card h4 {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
         }
 
-        .education-section h3,
-        .freelance-stats-section h3,
-        .wakatime-section h3,
-        .github-section h3,
-        .who-i-am-section h3 { /* ADDED: who-i-am-section h3 */
-            color: #00bfff;
-            font-size: 1.6em;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-weight: 600;
+        .stat-card img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .stat-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+
+        .stat-card ul li {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .stat-card ul li span {
+            color: var(--primary-color);
+            font-weight: bold;
         }
         
-        /* MODIFIED: Removed direct styling, will be handled by stat-card */
         .education-item p {
             margin: 5px 0;
             font-size: 1em;
-            color: #d0d0d0;
+            color: var(--text-muted-color);
         }
         
-        /* MODIFIED: This is no longer needed if we style p tags directly */
-        .education-item strong {
-            color: #00bfff;
-            font-size: 1.1em;
+        .education-item p:first-child {
+            color: var(--text-color);
+            font-weight: bold;
         }
-
-        .freelance-stats-grid-inner {
+        
+        /* ------------------------- */
+        /* STATS & INTERESTS GRIDS   */
+        /* ------------------------- */
+        .freelance-stats-grid-inner,
+        .personal-interests-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            text-align: center;
-            margin-top: 20px;
+        }
+        
+        .freelance-stats-grid-inner {
+             grid-template-columns: repeat(2, 1fr);
         }
 
-        .stat-item {
-            background-color: #333333;
+        .personal-interests-grid {
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        }
+
+        .stat-item,
+        .interest-item {
+            background-color: var(--surface-color);
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #444;
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
-
+        
         .stat-item i {
             font-size: 2em;
-            color: #00bfff;
+            color: var(--primary-color);
             margin-bottom: 10px;
         }
 
         .stat-item h4 {
-            color: #f0f0f0;
+            color: var(--text-color);
             font-size: 2.2em;
             margin: 0;
             font-weight: 700;
@@ -286,142 +317,201 @@
 
         .stat-item p {
             font-size: 0.9em;
-            color: #d0d0d0;
+            color: var(--text-muted-color);
             margin: 5px 0 0 0;
         }
-
-        .freelance-stats-grid-inner .stat-item:nth-child(3) {
-            grid-column: span 2;
-            max-width: 200px;
-            margin: 0 auto;
-        }
         
-        /* This is the key "box" style you wanted to replicate */
-        .stat-card {
-            background-color: #333333;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            text-align: left;
-            margin-top: 0 !important;
+        .interest-item {
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        .stat-card h4 {
-            color: #00bfff;
-            font-size: 1.5em;
-            margin-top: 0;
+        .interest-item:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .interest-item i {
+            font-size: 2.5em;
+            color: var(--primary-color);
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
-        .stat-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-top: 15px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stat-card p {
-            font-size: 0.95em;
-            color: #d0d0d0;
-            margin-top: 10px;
-        }
-
-        .stat-card ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        .stat-card ul li {
-            margin-bottom: 5px;
-            color: #f0f0f0;
+        .interest-item p {
             font-size: 0.9em;
+            color: var(--text-color);
+            margin: 0;
+            transition: color 0.3s ease;
         }
 
-        .stat-card ul li span {
-            color: #00bfff;
-            font-weight: bold;
+        .interest-item:hover i,
+        .interest-item:hover p {
+            color: var(--background-color);
         }
         
-        /* All other styles remain the same... */
-        .personal-interests-section { margin-top: 40px; padding-left: 0; padding-right: 0; padding-bottom: 0; }
-        .interests-box { padding: 25px; background-color: #1a1a1a; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); }
-        .personal-interests-section h3 { color: #00bfff; font-size: 1.6em; margin-top: 0; margin-bottom: 15px; font-weight: 600; text-align: left; border-bottom: 2px solid #00bfff; padding-bottom: 5px; display: block; width: fit-content; }
-        .personal-interests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px; text-align: center; margin-top: 20px; }
-        .interest-item { background-color: #333333; padding: 15px; border-radius: 8px; border: 1px solid #444; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: background-color 0.3s ease, transform 0.2s ease; }
-        .interest-item:hover { background-color: #00bfff; transform: translateY(-5px); }
-        .interest-item i { font-size: 2.5em; color: #00bfff; margin-bottom: 10px; transition: color 0.3s ease; }
-        .interest-item:hover i { color: #1a1a1a; }
-        .interest-item p { font-size: 0.9em; color: #f0f0f0; margin: 0; transition: color 0.3s ease; }
-        .interest-item:hover p { color: #1a1a1a; }
-        .footer { background-color: #1a1a1a; color: #f0f0f0; padding: 30px 40px; text-align: center; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: none; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3); flex-wrap: wrap; }
-        .footer-left { text-align: left; flex-grow: 1; min-width: 200px; margin-right: 20px; }
-        .footer-left h4 { margin: 0 0 5px 0; font-size: 1.8em; color: #00bfff; font-weight: 700; }
-        .footer-left p { margin: 0; font-size: 1.1em; color: #d0d0d0; opacity: 0.9; }
-        .footer-social-icons { display: flex; gap: 15px; flex-grow: 1; justify-content: center; min-width: 150px; margin: 0 20px; }
-        .footer-social-icons a { color: #f0f0f0; font-size: 1.5em; width: 45px; height: 45px; border-radius: 50%; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; }
-        .footer-social-icons a:hover { background-color: #00bfff; color: #1a1a1a; transform: translateY(-3px); }
-        .footer-right { font-size: 0.9em; color: #aaaaaa; text-align: right; flex-grow: 1; min-width: 200px; margin-left: 20px; }
+        /* ------------------------- */
+        /* FOOTER                    */
+        /* ------------------------- */
+        .footer {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 30px 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--surface-color);
+        }
+
+        .footer-left h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .footer-left p {
+            margin: 0;
+            font-size: 1.1em;
+            color: var(--text-muted-color);
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .footer-social-icons a {
+            color: var(--text-color);
+            font-size: 1.5em;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .footer-social-icons a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-right {
+            font-size: 0.9em;
+            color: #aaaaaa;
+        }
+
+        .footer-left,
+        .footer-right {
+            flex-grow: 1;
+        }
+        .footer-left { text-align: left; }
+        .footer-right { text-align: right; }
+
+        /* ------------------------- */
+        /* RESPONSIVE MEDIA QUERIES  */
+        /* ------------------------- */
         
-        /* Media Queries are unchanged */
+        /* Tablet View */
         @media (max-width: 1024px) {
-            .main-content-wrapper { flex-direction: column; gap: 40px; padding-right: 0; }
-            .main-content-wrapper::after { display: none; }
-            .about-left-column { padding-right: 0; }
-            .about-right-column { padding-left: 0; }
-            .profile-pic { margin: 0 auto 20px auto; }
-            .about-page-section { padding: 60px 30px 30px; }
-            .personal-interests-section { margin-top: 30px; }
+            .main-content-wrapper {
+                flex-direction: column;
+            }
+            .main-content-wrapper::after {
+                display: none;
+            }
+            .about-page-section {
+                padding: 100px 30px 30px;
+            }
         }
+        
+        /* Mobile View */
         @media (max-width: 768px) {
-            .header { flex-direction: row; justify-content: space-between; padding: 15px 20px; position: fixed; }
-            .main-nav { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background-color: #222222; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); padding: 20px 0; border-radius: 0 0 10px 10px; transition: transform 0.3s ease-out; transform: translateY(-100%); }
-            .main-nav.active { display: flex; transform: translateY(0); }
-            .main-nav a { margin: 10px 20px; font-size: 1.2em; width: fit-content; align-self: flex-start; }
-            .main-nav a::after { left: 20px; }
-            .hamburger-menu { display: block; }
-            .about-page-section { padding: 80px 15px 30px; margin-top: 0; margin-bottom: 30px; gap: 30px; }
-            .about-page-section>h2 { font-size: 2em; text-align: center; }
-            .about-page-section h3 { font-size: 1.4em; text-align: center; width: 100%; }
-            .profile-card { gap: 20px; }
-            .profile-pic { width: 120px; height: 120px; }
-            .who-i-am-section p { font-size: 0.95em; }
-            .education-item p { font-size: 0.9em; }
-            .stat-item h4 { font-size: 1.8em; }
-            .stat-item p { font-size: 0.8em; }
-            .stat-card h4 { font-size: 1.3em; }
-            .stat-card p, .stat-card ul li { font-size: 0.85em; }
-            .freelance-stats-grid-inner, .personal-interests-grid { grid-template-columns: 1fr; gap: 20px; }
-            .freelance-stats-grid-inner .stat-item:nth-child(3) { grid-column: auto; max-width: none; }
-            .personal-interests-section { margin-top: 30px; }
-            .interests-box { padding: 20px; }
-            .personal-interests-section h3 { font-size: 1.5em; text-align: left; margin-bottom: 10px; }
-            .personal-interests-grid { margin-top: 15px; gap: 15px; }
-            .footer { flex-direction: column; padding: 25px 15px; text-align: center; }
-            .footer-left, .footer-right, .footer-social-icons { text-align: center; min-width: unset; margin: 0 0 10px 0; }
-            .footer-social-icons { order: -1; margin-bottom: 15px; }
+            .header {
+                padding: 15px 20px;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Adjusted for header height */
+                left: 0;
+                width: 100%;
+                background-color: #222;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                padding: 20px 0;
+                border-radius: 0 0 10px 10px;
+            }
+            .main-nav.active {
+                display: flex;
+            }
+            .main-nav a {
+                margin: 10px 20px;
+                font-size: 1.2em;
+            }
+            .about-page-section {
+                padding: 80px 20px 30px;
+            }
+            .about-page-section > h2 {
+                font-size: 2.2em;
+                text-align: center;
+            }
+            .who-i-am-card h3,
+            .education-section h3,
+            .freelance-stats-section h3,
+            .wakatime-section h3,
+            .github-section h3,
+            .personal-interests-section h3 {
+                text-align: center;
+            }
+            .personal-interests-section h3 {
+                border-bottom: none;
+            }
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+            .freelance-stats-grid-inner {
+                grid-template-columns: 1fr;
+            }
+            .footer {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .footer-left, .footer-right {
+                text-align: center;
+            }
         }
+        
+        /* Small Mobile View */
         @media (max-width: 480px) {
-            .header-logo { font-size: 1.4em; }
-            .main-nav a { font-size: 1.1em; }
-            .about-page-section>h2 { font-size: 1.7em; }
-            .about-page-section h3 { font-size: 1.2em; }
-            .profile-pic { width: 100px; height: 100px; }
-            .who-i-am-section p { font-size: 0.9em; }
-            .education-item p { font-size: 0.85em; }
-            .stat-item h4 { font-size: 1.6em; }
-            .stat-item p { font-size: 0.75em; }
-            .stat-card h4 { font-size: 1.1em; }
-            .stat-card p, .stat-card ul li { font-size: 0.8em; }
-            .freelance-stats-grid-inner { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
-            .interest-item i { font-size: 2em; }
-            .interest-item p { font-size: 0.8em; }
-            .personal-interests-section h3 { font-size: 1.2em; }
-            .personal-interests-grid { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 10px; }
+            .about-page-section > h2 {
+                font-size: 1.8em;
+            }
+            .who-i-am-card h3,
+            .education-section h3,
+            .freelance-stats-section h3,
+            .wakatime-section h3,
+            .github-section h3 {
+                font-size: 1.4em;
+            }
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            .personal-interests-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -441,125 +531,118 @@
         </nav>
     </header>
 
-    <section class="about-page-section">
-        <h2>About Me</h2>
+    <main>
+        <section class="about-page-section">
+            <h2>About Me</h2>
 
-        <div class="main-content-wrapper">
-            <div class="about-left-column">
-                
-                <div class="profile-card">
-                    <div class="profile-pic">
-                        <img src="jhalespicture.jpg" alt="[Larawan ni Jhales Santiago]">
+            <div class="main-content-wrapper">
+                <div class="about-left-column">
+                    
+                    <div class="who-i-am-card">
+                        <div class="profile-pic">
+                            <img src="jhalespicture.jpg" alt="A portrait of Jhales Santiago. Based on the name and appearance, he could be of Filipino descent.">
+                        </div>
+                        <h3>Who I Am</h3>
+                        <div class="stat-card">
+                            <p>Hi, I'm Jhales Santiago, a passionate Website Developer from Quezon City, Metro Manila, Philippines, with a drive for creating both static and dynamic web applications.</p>
+                            <p>I am currently a 4th year college student at Bestlink College of the Philippines, pursuing a degree in Information Technology. In my free time, I love to work on personal projects to expand my portfolio and experience.</p>
+                        </div>
                     </div>
+
+                    <div class="wakatime-section">
+                        <h3>WakaTime Stats</h3>
+                        <div class="stat-card">
+                            <h4>Activity</h4>
+                            <img src="wakatime.png" alt="WakaTime coding activity graph showing PHP as the most used language.">
+                            <p>Last Week, I coded for 18 hrs 56 mins using WakaTime. I've coded for a total of 22 hrs 8 mins.</p>
+                            <p style="font-size: 0.8em; opacity: 0.7;">Data from 2025</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Contributions</h4>
+                            <img src="contribution.png" alt="Contributions graph.">
+                            <p>Record of 151 contributions in 2024</p>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="who-i-am-section">
-                    <h3>Who I Am</h3>
-                    <div class="stat-card">
-                        <p>Hi, I'm Jhales Santiago, a passionate Website Developer
-                            from Quezon City, Metro Manila, Philippines, with a drive for creating both static and
-                            dynamic web applications. My skills span from front-end design to back-end development, and
-                            I'm always eager to learn and embrace new technologies.</p>
-                        <p>I am currently a 4th year college student at Bestlink College of the
-                            Philippines,my degree in Information Technology. In my free
-                            time, I love to work on personal projects to expand my portfolio and experience.</p>
+                <div class="about-right-column">
+
+                    <div class="education-section">
+                        <h3>Education</h3>
+                        <div class="stat-card">
+                            <div class="education-item">
+                                <p>Bachelor of Science in Information Technology</p>
+                                <p>Bestlink College of the Philippines, 2025</p>
+                                <p>Currently in my 4th year of studies, focusing on Web Development.</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="freelance-stats-section">
+                        <h3>Product Status</h3>
+                        <div class="freelance-stats-grid-inner">
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <h4>500+</h4>
+                                <p>Satisfied Clients (Tappy)</p>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-folder-open"></i>
+                                <h4>31+</h4>
+                                <p>Projects</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="github-section">
+                        <h3>GitHub Stats</h3>
+                        <div class="stat-card">
+                            <h4>mnlxqc.git</h4>
+                            <img src="stats.png" alt="GitHub Stats card.">
+                            <ul>
+                                <li>Total Stars Earned: <span>550+</span></li>
+                                <li>Total Commits: <span>200+</span></li>
+                                <li>Total PRs: <span>0</span></li>
+                                <li>Total Issues: <span>0</span></li>
+                                <li>Contributed to (last year): <span>0</span></li>
+                            </ul>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Most Used Languages</h4>
+                            <img src="mostLanguageUses.png" alt="Most used languages graph.">
+                        </div>
+                    </div>
+
                 </div>
-                <div class="wakatime-section">
-                    <h3>WakaTime Stats</h3>
-                    <div class="stat-card">
-                        <h4>Activity</h4>
-                        <img src="wakatime.png" alt="[WakaTime Graph Placeholder]">
-                        <p>Last Week, I coded for 18 hrs 56 mins using WakaTime, I've coded for a total
-                            of 22 hrs 8 mins.</p>
-                        <p style="font-size: 0.8em; opacity: 0.7;">Data from 2025</p>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Contributions</h4>
-                        <img src="contribution.png" alt="[Contributions Graph Placeholder]">
-                        <p>Record of 151 contributions in 2024</p>
-                        <br>
-                        <h4>Something</h4>
-                        <img src="something.png" alt="[Contributions Graph Placeholder]">
+            </div>
+
+            <div class="personal-interests-section">
+                <div class="interests-box">
+                    <h3>Personal Interests</h3>
+                    <div class="personal-interests-grid">
+                        <div class="interest-item">
+                            <i class="fas fa-book-open"></i>
+                            <p>Reading</p>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-motorcycle"></i>
+                            <p>Motorcycle</p>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-gamepad"></i>
+                            <p>Gaming</p>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-film"></i>
+                            <p>Watching Movies</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="about-right-column">
-
-                <div class="education-section">
-                    <h3>Education</h3>
-                    <div class="stat-card">
-                        <div class="education-item">
-                            <p><strong>Bachelor of Science in Information Technology</strong></p>
-                            <p>Bestlink College of the Philippines 2025</p>
-                            <p>Currently in my 4th year of studies, focusing on Web Development.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="freelance-stats-section">
-                    <h3>Product Status</h3>
-                    <div class="freelance-stats-grid-inner">
-                        <div class="stat-item">
-                            <i class="fas fa-users"></i>
-                            <h4>500+</h4>
-                            <p>Satisfied Clients (Tappy)</p>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-folder-open"></i>
-                            <h4>31+</h4>
-                            <p>Projects</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="github-section">
-                    <h3>GitHub Stats</h3>
-                    <div class="stat-card">
-                        <h4>mnlxqc.git</h4>
-                        <img src="stats.png" alt="[GitHub Stats Placeholder]">
-                        <ul>
-                            <li>Total Stars Earned: <span>550+</span></li>
-                            <li>Total Commits: <span>200+</span></li>
-                            <li>Total PRs: <span>0</span></li>
-                            <li>Total Issues: <span>0</span></li>
-                            <li>Contributed to (last year): <span>0</span></li>
-                        </ul>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Most Used Languages</h4>
-                        <img src="mostLanguageUses.png" alt="[Language Graph Placeholder]">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="personal-interests-section">
-            <div class="interests-box">
-                <h3>Personal Interests</h3>
-                <div class="personal-interests-grid">
-                    <div class="interest-item">
-                        <i class="fas fa-book-open"></i>
-                        <p>Reading</p>
-                    </div>
-                    <div class="interest-item">
-                        <i class="fas fa-motorcycle"></i>
-                        <p>Motorcycle</p>
-                    </div>
-                    <div class="interest-item">
-                        <i class="fas fa-gamepad"></i>
-                        <p>Gaming</p>
-                    </div>
-                    <div class="interest-item">
-                        <i class="fas fa-film"></i>
-                        <p>Watching Movies</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-left">
@@ -567,11 +650,10 @@
             <p>Website Developer</p>
         </div>
         <div class="footer-social-icons">
-            <a href="https://github.com/SantiagoJhalesArlick" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank"><i
-                    class="fab fa-linkedin"></i></a>
-            <a href="https://www.facebook.com/jhales016" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="mailto:jhalesarizosantiago@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/SantiagoJhalesArlick" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/illumi-zoldyck-97943136a/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/jhales016" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:jhalesarizosantiago@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="footer-right">
             &copy; <span id="current-year"></span> Jhales Santiago. All rights reserved.
@@ -579,36 +661,33 @@
     </footer>
 
     <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in the footer
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
 
-        const hamburgerMenu = document.getElementById('hamburger-menu-icon');
-        const mainNavLinks = document.getElementById('main-nav-links');
+            // Hamburger menu functionality
+            const hamburgerMenu = document.getElementById('hamburger-menu-icon');
+            const mainNavLinks = document.getElementById('main-nav-links');
 
-        hamburgerMenu.addEventListener('click', () => {
-            mainNavLinks.classList.toggle('active');
-        });
+            if (hamburgerMenu && mainNavLinks) {
+                hamburgerMenu.addEventListener('click', () => {
+                    mainNavLinks.classList.toggle('active');
+                });
+            }
 
-        mainNavLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (mainNavLinks.classList.contains('active')) {
-                    mainNavLinks.classList.remove('active');
-                }
+            // Close mobile menu when a link is clicked
+            const navLinks = mainNavLinks.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNavLinks.classList.contains('active')) {
+                        mainNavLinks.classList.remove('active');
+                    }
+                });
             });
         });
-
-        const currentPath = window.location.pathname.split('/').pop();
-        const navLinks = document.querySelectorAll('.main-nav a');
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPath) {
-                link.classList.add('active-nav-link');
-            } else if (link.getAttribute('href') === 'index.html#skills' && currentPath === 'index.html') {
-                link.classList.remove('active-nav-link');
-            }
-        });
-
-        if (currentPath === 'about.html' || currentPath === '') {
-            document.querySelector('.main-nav a[href="about.html"]').classList.add('active-nav-link');
-        }
     </script>
 </body>
 

@@ -288,7 +288,7 @@
             .hamburger-menu {
                 display: block;
             }
-           
+            
             /* Hide social links on smaller screens */
             .social-links {
                 display: none;
@@ -782,8 +782,6 @@
         <a href="https://www.instagram.com/wkadflzmxhs/" target="_blank" aria-label="Instagram" class="instagram">
             <i class="fab fa-instagram"></i>
         </a>
-                </a>
-   
     </div>
 
     <header class="header">
@@ -805,7 +803,7 @@
                 Have a project in mind or want to collaborate? Feel free to reach out!
             </p>
 
-            <form id="contact-form">
+            <form id="contact-form" action="https://formspree.io/f/xrbkrrrp" method="POST">
                 <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -813,7 +811,7 @@
 
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    <input type="email" id="email" name="_replyto" placeholder="jhalesarizosantiago@gmail.com" required>
                 </div>
 
                 <div>
@@ -905,24 +903,47 @@
             });
         });
 
-        // Contact form submission handling
+        // --- UPDATED CONTACT FORM SUBMISSION HANDLING FOR FORMSPREE (AJAX) ---
         const contactForm = document.getElementById('contact-form');
         const successModal = document.getElementById('success-modal');
 
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission to handle with JavaScript
 
-            // Here you would typically send the form data to a server
-            // For this example, we'll just simulate success
+            const formData = new FormData(this); // Get form data
+            
+            try {
+                // Send form data to Formspree using fetch
+                const response = await fetch(this.action, {
+                    method: this.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Essential for Formspree AJAX response
+                    }
+                });
 
-            // Clear form fields
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
+                if (response.ok) {
+                    // Form submission successful
+                    // Clear form fields
+                    document.getElementById('name').value = '';
+                    document.getElementById('email').value = '';
+                    document.getElementById('message').value = '';
 
-            // Show the success modal
-            successModal.style.display = 'flex'; // Use flex to center the modal content
+                    // Show the success modal
+                    successModal.style.display = 'flex'; 
+                } else {
+                    // Form submission failed or there was an issue
+                    const errorData = await response.json(); // Try to parse error response
+                    console.error('Form submission failed:', errorData);
+                    alert(`Failed to send message: ${errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Unknown error.'}`);
+                }
+            } catch (error) {
+                // Network error or other unexpected issues
+                console.error('Network or submission error:', error);
+                alert('An error occurred while sending your message. Please try again later.');
+            }
         });
+        // --- END UPDATED CONTACT FORM SUBMISSION HANDLING ---
 
         // Chatbot functionality
         const chatbotToggle = document.getElementById('chatbot-toggle');
@@ -981,7 +1002,9 @@
             } else if (prompt.toLowerCase().includes("what are your skills?")) {
                 botResponse = "I’m skilled in PHP, HTML, CSS, JavaScript, Laravel, Python, and React, along with other web-based programming languages. I'm always eager to learn new technologies, improve my craft, and explore innovative ways to build efficient and user-friendly web applications.";
             } else if (prompt.toLowerCase().includes("work experience")) {
-                botResponse = "You can find details about my work experience in the 'About' and 'Projects' section of my portfolio, I have experience in a team collaboration like Josiah and Arwin, also working and debug my school projects working and integrating some";
+                botResponse = "You can find details about my work experience in the 'About' and 'Projects' section of my portfolio. I have experience in team collaboration, like with Josiah and Arwin, and also in working on and debugging my school projects, integrating various components.";
+            } else if (prompt.toLowerCase().includes("contact information")) {
+                botResponse = "You can contact me directly through the form on this page, or reach out via email at jhalesarizosantiago@gmail.com. You can also find links to my social media (GitHub, LinkedIn, Facebook) in the footer of this website!";
             } else {
                 botResponse = "I'm sorry, I'm not sure how to answer that yet. You can try asking about my skills, projects, or how to contact the owner of this portfolio.";
             }
